@@ -1,0 +1,16 @@
+# object files
+*.o
+
+# patched machine code
+*.exe
+*.dll
+
+# PETool on unix
+/petool
+
+# configuration
+config.mk
+
+# misc junk
+*~
+\#*\#
