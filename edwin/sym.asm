@@ -2,6 +2,7 @@
 
 setcglob 0x0048FBBA, start
 
+setcglob 0x004D86F0, ScrollRate
 
 
 ; winapi

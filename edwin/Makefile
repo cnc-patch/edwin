@@ -14,13 +14,14 @@ INCLUDES    = -Iinc/ -I../shared/inc/ -I../common/inc/
 
 LIBS        = -nostdlib
 OBJS        = \
-		src/no_disk_space_error.o \
-		src/load_standalone_files.o \
-		src/allow_multiple_instances.o \
-		src/change_window_title.o \
-        \
-		sym.o \
-		res/res.o
+            src/no_disk_space_error.o \
+            src/load_standalone_files.o \
+            src/allow_multiple_instances.o \
+            src/change_window_title.o \
+            src/slower_scrollrate.o \
+            \
+            sym.o \
+            res/res.o
 
 
 DLL_OBJS    = bin.o # now this is a hack
