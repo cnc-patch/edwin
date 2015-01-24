@@ -2,7 +2,18 @@
 
 setcglob 0x0048FBBA, start
 
+; ### vars ###
 setcglob 0x004D86F0, ScrollRate
+setcglob 0x004AF944, ScreenWidth
+setcglob 0x004AF948, ScreenHeight
+
+; ### functions ###
+setcglob 0x0047B6F7, INIClass__Put_Int
+setcglob 0x0047B7A9, INIClass__Get_Int
+setcglob 0x0047B945, INIClass__Put_String
+setcglob 0x0047BAA4, INIClass__Get_String
+setcglob 0x0047BB68, INIClass__Put_Bool
+setcglob 0x0047BBBC, INIClass__Get_Bool
 
 
 ; winapi

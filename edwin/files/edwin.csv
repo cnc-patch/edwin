@@ -1,5 +1,13 @@
 RVA,label,comment
 00001003,___begtext,___begtext
+0003395D,,Load ScrollRate
+000342E0,,Save ScrollRate
+000576D6,Drawing_Unknown2,
+0005B4D6,ScrollClass::Unknown,
+0005D720,Drawing_Unknown,
+0005D917,,Sidebar draw tile selection border
+0005D93A,,Sidebar draw tile selection background
+0005D961,,Sidebar draw selected tile
 000604FC,_WinMain,_WinMain
 00074278,W?Windows_Procedure$n(pnvuiuil)l,W?Windows_Procedure$n(pnvuiuil)l
 00075ED0,fptc,fptc
@@ -7,6 +15,21 @@ RVA,label,comment
 0007A687,strncpy_,strncpy_
 0007A6AC,__assert_,__assert_
 0007A6CC,__wcpp_2_dtor_array__,__wcpp_2_dtor_array__
+0007B21A,"const INIClass::Get_Entry(char *,int)",
+0007B29A,"INIClass::Put_UUBlock(char *,void *,int)",
+0007B3BE,"const INIClass::Get_UUBlock(char *,void *,int)",
+0007B4EA,"INIClass::Put_TextBlock(char *,char *)",
+0007B613,"const INIClass::Get_TextBlock(char *,char *,int)",
+0007B6F7,"INIClass::Put_Int(char *,char *,int,int)",
+0007B7A9,"const INIClass::Get_Int(char *,char *,int)",
+0007B87B,"INIClass::Put_Hex(char *,char *,int)",
+0007B8D1,"const INIClass::Get_Hex(char *,char *,int)",
+0007B945,"INIClass::Put_String(char *,char *,char *)",
+0007BAA4,"const INIClass::Get_String(char *,char *,char *,char *,int)",
+0007BB68,"INIClass::Put_Bool(char *,char *,int)",
+0007BBBC,"const INIClass::Get_Bool(char *,char *,int)",
+0007BD38,INIClass::Put_PKey(PKey &),
+0007BDB1,const INIClass::Get_PKey(int),
 0007CD40,__wcpp_2_module_dtor__,__wcpp_2_module_dtor__
 0007CD9C,W?fs_state_table$n(pn$ro_dtreg$$)pn$__7a4u3RO_STATE$$,W?fs_state_table$n(pn$ro_dtreg$$)pn$__7a4u3RO_STATE$$
 0007CDA0,W?fs_point_object$n(pn$rw_dtreg$$ui)pnv,W?fs_point_object$n(pn$rw_dtreg$$ui)pnv
@@ -341,7 +364,12 @@ RVA,label,comment
 000A9978,FileName,FileName
 000AD964,_IsTable,_IsTable
 000AE868,aTemperate,aTemperate
+000AF944,ScreenWidth,
+000AF948,ScreenHeight,
+000B0978,VideoBackBuffer,
+000B5820,HardwareFills,
 000B6E68,dwTlsIndex,dwTlsIndex
+000D86F0,ScrollRate,
 000FE9A8,TargetHandle,TargetHandle
 000FEF9C,uTimerID,uTimerID
 000FEFF0,CriticalSection,CriticalSection

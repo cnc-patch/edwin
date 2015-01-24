@@ -19,6 +19,8 @@ OBJS        = \
             src/allow_multiple_instances.o \
             src/change_window_title.o \
             src/slower_scrollrate.o \
+            src/redalert.ini.o \
+            src/hires.o \
             \
             sym.o \
             res/res.o
