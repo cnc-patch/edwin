@@ -22,7 +22,11 @@ cextern SidebarButtonTerrainWaterX
 
 gint HighResAddedWidth, 0
 gint HighResAddedHeight, 0
-gint HighResWidthInTiles, 20
+gint HighResAlignX, 0
+gint HighResAlignY, 0
+
+sint HighResWidthInTiles, 20
+
 
 @REPLACE 0x00460929, 0x0046092F, InitHighRes
     pushad
@@ -40,9 +44,25 @@ gint HighResWidthInTiles, 20
     sub eax, 640
     mov dword[HighResAddedWidth], eax
     
+    cmp eax, 0
+    jz .NoDivide
+    xor edx, edx
+    mov ecx, 2
+    div ecx
+    mov dword[HighResAlignX], eax
+.NoDivide:
+    
     mov eax, dword[ScreenHeight]
     sub eax, 400
     mov dword[HighResAddedHeight], eax
+    
+    cmp eax, 0
+    jz .NoDivide2
+    xor edx, edx
+    mov ecx, 2
+    div ecx
+    mov dword[HighResAlignY], eax
+.NoDivide2:
     
     popad
     mov ecx, dword[ScreenHeight]
@@ -171,6 +191,72 @@ gint HighResWidthInTiles, 20
     mov eax, 640
 @ENDPATCH
 
+@REPLACE 0x0045B5CF, 0x0045B5D6, AdjustScrolling3
+    mov eax, dword[HighResAddedWidth]
+    add eax, 540
+    jmp 0x0045B5D6
+@ENDREPLACE
+
+@REPLACE 0x0045B5DE, 0x0045B5E5, AdjustScrolling4
+    mov eax, dword[HighResAddedWidth]
+    add eax, 540
+    jmp 0x0045B5E5
+@ENDREPLACE
+
+@REPLACE 0x0045B5F2, 0x0045B5F9, AdjustScrolling5
+    mov edx, dword[HighResAddedWidth]
+    add edx, 640
+    jmp 0x0045B5F9
+@ENDREPLACE
+
+@REPLACE 0x0045B616, 0x0045B61D, AdjustScrolling7
+    mov eax, dword[HighResAddedWidth]
+    add eax, 540
+    jmp 0x0045B61D
+@ENDREPLACE
+
+@REPLACE 0x0045B627, 0x0045B62E, AdjustScrolling8
+    mov edx, dword[HighResAlignX]
+    add edx, 320
+    jmp 0x0045B62E
+@ENDREPLACE
+
+@REPLACE 0x0045B672, 0x0045B679, AdjustScrolling9
+    mov eax, dword[HighResAddedHeight]
+    add eax, 300
+    jmp 0x0045B679
+@ENDREPLACE
+
+@REPLACE 0x0045B672, 0x0045B679, AdjustScrolling12
+    mov eax, dword[HighResAddedHeight]
+    add eax, 300
+    jmp 0x0045B679
+@ENDREPLACE
+
+@REPLACE 0x0045B681, 0x0045B688, AdjustScrolling13
+    mov eax, dword[HighResAddedHeight]
+    add eax, 300
+    jmp 0x0045B688
+@ENDREPLACE
+
+@REPLACE 0x0045B695, 0x0045B69C, AdjustScrolling14
+    mov edx, dword[HighResAddedHeight]
+    add edx, 400
+    jmp 0x0045B69C
+@ENDREPLACE
+
+@REPLACE 0x0045B6B0, 0x0045B6B7, AdjustScrolling15
+    mov edx, dword[HighResAlignY]
+    add edx, 200
+    jmp 0x0045B6B7
+@ENDREPLACE
+
+@REPLACE 0x0045B6BA, 0x0045B6C1, AdjustScrolling16
+    mov esi, dword[HighResAlignX]
+    add esi, 320
+    jmp 0x0045B6C1
+@ENDREPLACE
+
 @HACK 0x0045D6C2, AdjustSidebarButtons
     push eax
     mov eax, dword[HighResAddedWidth]
@@ -227,4 +313,3 @@ gint HighResWidthInTiles, 20
     pop esi
     jmp 0x0045D6C7
 @ENDHACK
-
