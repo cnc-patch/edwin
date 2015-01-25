@@ -7,6 +7,22 @@ setcglob 0x004D86F0, ScrollRate
 setcglob 0x004AF944, ScreenWidth
 setcglob 0x004AF948, ScreenHeight
 
+setcglob 0x4ECB48, SidebarButtonShoreX
+setcglob 0x4ECB84, SidebarButtonRiverX
+setcglob 0x4ECBC0, SidebarButtonRoadX
+setcglob 0x4ECBFC, SidebarButtonRidgesX
+setcglob 0x4ECC38, SidebarButtonTreesX
+setcglob 0x4ECC74, SidebarButtonDebrisX
+setcglob 0x4ECD90, SidebarButtonLeftArrowX
+setcglob 0x4ECDC8, SidebarButtonRightArrowX
+setcglob 0x4ECE00, SidebarButtonTileBrowserX
+setcglob 0x4ECE38, SidebarButtonFlagX
+setcglob 0x4ECE70, SidebarButtonTileSelectionX
+setcglob 0x4ECCB0, SidebarButtonTerrainClearX
+setcglob 0x4ECD20, SidebarButtonTerrainOreX
+setcglob 0x4ECD58, SidebarButtonTerrainGemX
+setcglob 0x4ECCE8, SidebarButtonTerrainWaterX
+
 ; ### functions ###
 setcglob 0x0047B6F7, INIClass__Put_Int
 setcglob 0x0047B7A9, INIClass__Get_Int

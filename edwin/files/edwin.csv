@@ -1,9 +1,13 @@
 RVA,label,comment
 00001003,___begtext,___begtext
+00019B12,CellClass::Unknown,
 0003395D,,Load ScrollRate
 000342E0,,Save ScrollRate
 000576D6,Drawing_Unknown2,
 0005B4D6,ScrollClass::Unknown,
+0005CC71,SetupSidebarButtons,
+0005D0A3,,Left arrow button Y
+0005D4AB,SetupSidebarTerrainButtons,
 0005D720,Drawing_Unknown,
 0005D917,,Sidebar draw tile selection border
 0005D93A,,Sidebar draw tile selection background
@@ -370,6 +374,21 @@ RVA,label,comment
 000B5820,HardwareFills,
 000B6E68,dwTlsIndex,dwTlsIndex
 000D86F0,ScrollRate,
+000ECB48,SidebarButtonShoreX,
+000ECB84,SidebarButtonRiverX,
+000ECBC0,SidebarButtonRoadX,
+000ECBFC,SidebarButtonRidgesX,
+000ECC38,SidebarButtonTreesX,
+000ECC74,SidebarButtonDebrisX,
+000ECCB0,SidebarButtonTerrainClearX,
+000ECCE8,SidebarButtonTerrainWaterX,
+000ECD20,SidebarButtonTerrainOreX,
+000ECD58,SidebarButtonTerrainGemX,
+000ECD90,SidebarButtonLeftArrowX,
+000ECDC8,SidebarButtonRightArrowX,
+000ECE00,SidebarButtonTileBrowserX,
+000ECE38,SidebarButtonFlagX,
+000ECE70,SidebarButtonTileSelectionX,
 000FE9A8,TargetHandle,TargetHandle
 000FEF9C,uTimerID,uTimerID
 000FEFF0,CriticalSection,CriticalSection
