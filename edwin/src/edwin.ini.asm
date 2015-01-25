@@ -36,11 +36,17 @@ cextern INIClass__Get_Int
 cextern INIClass__Get_String
 cextern INIClass__Get_Bool
 
+sstring settingsIni, "edwin.ini"
+
 sstring OptionsSection, "Options"
 sstring ScrollRateKey, "ScrollRate"
 sstring SlowerScrollRateKey, "SlowerScrollRate"
 sstring WidthKey, "EditorWidth"
 sstring HeightKey, "EditorHeight"
+
+@PATCH 0x004607D2
+    mov edx, settingsIni
+@ENDPATCH
 
 @HACK 0x00461130, LoadRedalertIni
     INI_Get_Int OptionsSection, ScrollRateKey, 5

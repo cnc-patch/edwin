@@ -191,67 +191,67 @@ sint HighResWidthInTiles, 20
     mov eax, 640
 @ENDPATCH
 
-@REPLACE 0x0045B5CF, 0x0045B5D6, AdjustScrolling3
+@REPLACE 0x0045B5CF, 0x0045B5D6, AdjustScrolling1
     mov eax, dword[HighResAddedWidth]
     add eax, 540
     jmp 0x0045B5D6
 @ENDREPLACE
 
-@REPLACE 0x0045B5DE, 0x0045B5E5, AdjustScrolling4
+@REPLACE 0x0045B5DE, 0x0045B5E5, AdjustScrolling2
     mov eax, dword[HighResAddedWidth]
     add eax, 540
     jmp 0x0045B5E5
 @ENDREPLACE
 
-@REPLACE 0x0045B5F2, 0x0045B5F9, AdjustScrolling5
+@REPLACE 0x0045B5F2, 0x0045B5F9, AdjustScrolling3
     mov edx, dword[HighResAddedWidth]
     add edx, 640
     jmp 0x0045B5F9
 @ENDREPLACE
 
-@REPLACE 0x0045B616, 0x0045B61D, AdjustScrolling7
+@REPLACE 0x0045B616, 0x0045B61D, AdjustScrolling4
     mov eax, dword[HighResAddedWidth]
     add eax, 540
     jmp 0x0045B61D
 @ENDREPLACE
 
-@REPLACE 0x0045B627, 0x0045B62E, AdjustScrolling8
+@REPLACE 0x0045B627, 0x0045B62E, AdjustScrolling5
     mov edx, dword[HighResAlignX]
     add edx, 320
     jmp 0x0045B62E
 @ENDREPLACE
 
-@REPLACE 0x0045B672, 0x0045B679, AdjustScrolling9
+@REPLACE 0x0045B672, 0x0045B679, AdjustScrolling6
     mov eax, dword[HighResAddedHeight]
     add eax, 300
     jmp 0x0045B679
 @ENDREPLACE
 
-@REPLACE 0x0045B672, 0x0045B679, AdjustScrolling12
+@REPLACE 0x0045B672, 0x0045B679, AdjustScrolling7
     mov eax, dword[HighResAddedHeight]
     add eax, 300
     jmp 0x0045B679
 @ENDREPLACE
 
-@REPLACE 0x0045B681, 0x0045B688, AdjustScrolling13
+@REPLACE 0x0045B681, 0x0045B688, AdjustScrolling8
     mov eax, dword[HighResAddedHeight]
     add eax, 300
     jmp 0x0045B688
 @ENDREPLACE
 
-@REPLACE 0x0045B695, 0x0045B69C, AdjustScrolling14
+@REPLACE 0x0045B695, 0x0045B69C, AdjustScrolling9
     mov edx, dword[HighResAddedHeight]
     add edx, 400
     jmp 0x0045B69C
 @ENDREPLACE
 
-@REPLACE 0x0045B6B0, 0x0045B6B7, AdjustScrolling15
+@REPLACE 0x0045B6B0, 0x0045B6B7, AdjustScrolling10
     mov edx, dword[HighResAlignY]
     add edx, 200
     jmp 0x0045B6B7
 @ENDREPLACE
 
-@REPLACE 0x0045B6BA, 0x0045B6C1, AdjustScrolling16
+@REPLACE 0x0045B6BA, 0x0045B6C1, AdjustScrolling11
     mov esi, dword[HighResAlignX]
     add esi, 320
     jmp 0x0045B6C1

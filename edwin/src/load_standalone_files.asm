@@ -5,7 +5,6 @@
 sstring mainMix, "raed.mix"
 sstring sfmainMix, "%c:raed.mix"
 sstring redalertMix, "raed1.mix"
-sstring redalertIni, "edwin.ini"
 
 @PATCH 0x0043DBDA
     mov edx, mainMix
@@ -17,8 +16,4 @@ sstring redalertIni, "edwin.ini"
 
 @PATCH 0x0043DA10
     mov edx, redalertMix
-@ENDPATCH
-
-@PATCH 0x004607D2
-    mov edx, redalertIni
 @ENDPATCH

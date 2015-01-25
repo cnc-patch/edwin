@@ -14,12 +14,13 @@ INCLUDES    = -Iinc/ -I../shared/inc/ -I../common/inc/
 
 LIBS        = -nostdlib
 OBJS        = \
+            src/window_procedure.o \
             src/no_disk_space_error.o \
             src/load_standalone_files.o \
             src/allow_multiple_instances.o \
             src/change_window_title.o \
             src/slower_scrollrate.o \
-            src/redalert.ini.o \
+            src/edwin.ini.o \
             src/hires.o \
             \
             sym.o \

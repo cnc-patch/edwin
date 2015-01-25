@@ -24,6 +24,8 @@ setcglob 0x4ECD58, SidebarButtonTerrainGemX
 setcglob 0x4ECCE8, SidebarButtonTerrainWaterX
 
 ; ### functions ###
+setcglob 0x00474278, OriginalWindowProcedure
+
 setcglob 0x0047B6F7, INIClass__Put_Int
 setcglob 0x0047B7A9, INIClass__Get_Int
 setcglob 0x0047B945, INIClass__Put_String
