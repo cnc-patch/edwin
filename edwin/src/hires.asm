@@ -77,16 +77,18 @@ gint HighResWidthInTiles, 20
     jmp 0x00460DA0
 @ENDREPLACE
 
-@HACK 0x0044985B, AdjustTacticalAreaHeight
-    add eax, dword[HighResAddedHeight]
-    mov dword[0x4EBE70], eax
-    jmp 0x00449860
-@ENDHACK
-
 @HACK 0x0044984C, AdjustTacticalAreaWidth
-    add eax, dword[HighResAddedWidth]
+    mov eax, dword[HighResAddedWidth]
+    add eax, 480
     mov dword[0x4EBE6C], eax
     jmp 0x00449851
+@ENDHACK
+
+@HACK 0x0044985B, AdjustTacticalAreaHeight
+    mov eax, dword[HighResAddedHeight]
+    add eax, 384
+    mov dword[0x4EBE70], eax
+    jmp 0x00449860
 @ENDHACK
 
 @HACK 0x00457972, AdjustSidebarBackground1
@@ -150,8 +152,12 @@ gint HighResWidthInTiles, 20
 @ENDHACK
 
 @HACK 0x0045799F, AdjustMiniMapBackground
-    mov eax, dword[HighResAddedWidth]
+    mov eax, dword[ScreenWidth] ; FIX ME - mini map automatically aligns using buffer size width
+    sub eax, 640
     add eax, 494
+    
+    ;mov eax, dword[HighResAddedWidth]
+    ;add eax, 494
     jmp 0x004579A4
 @ENDHACK
 
@@ -161,23 +167,59 @@ gint HighResWidthInTiles, 20
     jmp 0x0045DEB0
 @ENDHACK
 
+@PATCH 0x00422246 ;override GetScreenWidth call to avoid automatic align on the right side for credits
+    mov eax, 640
+@ENDPATCH
+
 @HACK 0x0045D6C2, AdjustSidebarButtons
-    mov ecx, dword[HighResAddedWidth]
-    add dword[SidebarButtonShoreX], ecx
-    add dword[SidebarButtonRiverX], ecx
-    add dword[SidebarButtonRoadX], ecx
-    add dword[SidebarButtonRidgesX], ecx
-    add dword[SidebarButtonTreesX], ecx
-    add dword[SidebarButtonDebrisX], ecx
-    add dword[SidebarButtonLeftArrowX], ecx
-    add dword[SidebarButtonRightArrowX], ecx
-    add dword[SidebarButtonTileBrowserX], ecx
-    add dword[SidebarButtonFlagX], ecx
-    add dword[SidebarButtonTileSelectionX], ecx
-    add dword[SidebarButtonTerrainClearX], ecx
-    add dword[SidebarButtonTerrainOreX], ecx
-    add dword[SidebarButtonTerrainGemX], ecx
-    add dword[SidebarButtonTerrainWaterX], ecx
+    push eax
+    mov eax, dword[HighResAddedWidth]
+    mov ecx, eax
+    add ecx, 484
+    mov dword[SidebarButtonShoreX], ecx
+    mov ecx, eax
+    add ecx, 484
+    mov dword[SidebarButtonRiverX], ecx
+    mov ecx, eax
+    add ecx, 484
+    mov dword[SidebarButtonRoadX], ecx
+    mov ecx, eax
+    add ecx, 564
+    mov dword[SidebarButtonRidgesX], ecx
+    mov ecx, eax
+    add ecx, 564
+    mov dword[SidebarButtonTreesX], ecx
+    mov ecx, eax
+    add ecx, 564
+    mov dword[SidebarButtonDebrisX], ecx
+    mov ecx, eax
+    add ecx, 482
+    mov dword[SidebarButtonLeftArrowX], ecx
+    mov ecx, eax
+    add ecx, 522
+    mov dword[SidebarButtonRightArrowX], ecx
+    mov ecx, eax
+    add ecx, 562
+    mov dword[SidebarButtonTileBrowserX], ecx
+    mov ecx, eax
+    add ecx, 602
+    mov dword[SidebarButtonFlagX], ecx
+    mov ecx, eax
+    add ecx, 488
+    mov dword[SidebarButtonTileSelectionX], ecx
+    mov ecx, eax
+    add ecx, 486
+    mov dword[SidebarButtonTerrainClearX], ecx
+    mov ecx, eax
+    add ecx, 524
+    mov dword[SidebarButtonTerrainOreX], ecx
+    mov ecx, eax
+    add ecx, 562
+    mov dword[SidebarButtonTerrainGemX], ecx
+    mov ecx, eax
+    add ecx, 600
+    mov dword[SidebarButtonTerrainWaterX], ecx
+    pop eax
     
     mov esp, ebp
     pop ebp

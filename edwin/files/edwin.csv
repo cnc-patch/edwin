@@ -1,8 +1,15 @@
 RVA,label,comment
 00001003,___begtext,___begtext
 00019B12,CellClass::Unknown,
+000202F3,DrawShp,
+00021814,GetScreenWidth?,
+0002220D,DrawCredtisTabText,
+00023AC2,Drawing_Unknown3,
+00023F60,DrawString_Unknown,
+00023FE2,DrawInt?,
 0003395D,,Load ScrollRate
 000342E0,,Save ScrollRate
+00043CE6,Calculate_Credits?,
 000576D6,Drawing_Unknown2,
 0005B4D6,ScrollClass::Unknown,
 0005CC71,SetupSidebarButtons,
@@ -13,6 +20,11 @@ RVA,label,comment
 0005D93A,,Sidebar draw tile selection background
 0005D961,,Sidebar draw selected tile
 000604FC,_WinMain,_WinMain
+00061271,DoDrawing,
+00061526,DrawPassableTab,
+00061590,,PassableTabBackgroundX
+000615F6,,PassableTextX
+000616DE,DrawMapSizeTab,
 00074278,W?Windows_Procedure$n(pnvuiuil)l,W?Windows_Procedure$n(pnvuiuil)l
 00075ED0,fptc,fptc
 0007A662,unknown_libname_6,unknown_libname_6
@@ -374,6 +386,7 @@ RVA,label,comment
 000B5820,HardwareFills,
 000B6E68,dwTlsIndex,dwTlsIndex
 000D86F0,ScrollRate,
+000E0CB3,PassableButtonIsDownBool,
 000ECB48,SidebarButtonShoreX,
 000ECB84,SidebarButtonRiverX,
 000ECBC0,SidebarButtonRoadX,
