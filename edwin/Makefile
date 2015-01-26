@@ -23,6 +23,7 @@ OBJS        = \
             src/edwin.ini.o \
             src/hires.o \
             src/mega_map.o \
+            src/theaters.o \
             \
             sym.o \
             res/res.o

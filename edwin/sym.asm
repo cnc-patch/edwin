@@ -34,6 +34,10 @@ setcglob 0x0047BAA4, INIClass__Get_String
 setcglob 0x0047BB68, INIClass__Put_Bool
 setcglob 0x0047BBBC, INIClass__Get_Bool
 
+setcglob 0x00485561, strcpy
+setcglob 0x0047A687, strncpy
+setcglob 0x0047FA83, stricmp
+
 
 ; winapi
 ;setcglob 0x, _imp__LoadLibraryA
