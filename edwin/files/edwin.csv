@@ -2,13 +2,17 @@ RVA,label,comment
 00001003,___begtext,___begtext
 00019B12,CellClass::Unknown,
 000202F3,DrawShp,
-00021814,GetScreenWidth?,
+00021814,GetScreenWidth,
 0002220D,DrawCredtisTabText,
+00022F74,DrawMenuBackgroundAndBorder,
 00023AC2,Drawing_Unknown3,
 00023F60,DrawString_Unknown,
 00023FE2,DrawInt?,
+000244EC,GetScreenHeight,
+000329EE,DialogModifyMapInfo?,
 0003395D,,Load ScrollRate
 000342E0,,Save ScrollRate
+00041DC8,MenuAutoAlignStuff?,
 00043CE6,Calculate_Credits?,
 000576D6,Drawing_Unknown2,
 0005B4D6,ScrollClass::Unknown,
@@ -386,7 +390,12 @@ RVA,label,comment
 000B5820,HardwareFills,
 000B6E68,dwTlsIndex,dwTlsIndex
 000D86F0,ScrollRate,
+000D8754,MapX,
+000D8758,MapY,
+000D875C,MapWidth,
+000D8760,MapHeight,
 000E0CB3,PassableButtonIsDownBool,
+000EA354,EditorLanguage,
 000ECB48,SidebarButtonShoreX,
 000ECB84,SidebarButtonRiverX,
 000ECBC0,SidebarButtonRoadX,

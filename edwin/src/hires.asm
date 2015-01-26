@@ -27,7 +27,6 @@ gint HighResAlignY, 0
 
 sint HighResWidthInTiles, 20
 
-
 @REPLACE 0x00460929, 0x0046092F, InitHighRes
     pushad
     
@@ -44,32 +43,22 @@ sint HighResWidthInTiles, 20
     sub eax, 640
     mov dword[HighResAddedWidth], eax
     
-    cmp eax, 0
-    jz .NoDivide
-    xor edx, edx
-    mov ecx, 2
-    div ecx
+    sar eax, 1
     mov dword[HighResAlignX], eax
-.NoDivide:
     
     mov eax, dword[ScreenHeight]
     sub eax, 400
     mov dword[HighResAddedHeight], eax
     
-    cmp eax, 0
-    jz .NoDivide2
-    xor edx, edx
-    mov ecx, 2
-    div ecx
+    sar eax, 1
     mov dword[HighResAlignY], eax
-.NoDivide2:
     
     popad
     mov ecx, dword[ScreenHeight]
     jmp 0x0046092F
 @ENDREPLACE
 
-@CLEAR 0x00461193, 0x90, 0x00461198 ; Ignore [Options]Resolution= in redalert.ini
+@CLEAR 0x00461193, 0x90, 0x00461198 ; Ignore [Options]Resolution= in edwin.ini
 @CLEAR 0x00460D1C, 0x90, 0x00460D26 ; Do not change the height to 400
 @SJMP 0x00460D35, 0x00460D79 ; Do not use black bars with 480 height
 
@@ -188,6 +177,10 @@ sint HighResWidthInTiles, 20
 @ENDHACK
 
 @PATCH 0x00422246 ;override GetScreenWidth call to avoid automatic align on the right side for credits
+    mov eax, 640
+@ENDPATCH
+
+@PATCH 0x00441DDE ;override GetScreenWidth call to avoid automatic scale/align for menus
     mov eax, 640
 @ENDPATCH
 

@@ -6,6 +6,7 @@ setcglob 0x0048FBBA, start
 setcglob 0x004D86F0, ScrollRate
 setcglob 0x004AF944, ScreenWidth
 setcglob 0x004AF948, ScreenHeight
+setcglob 0x004EA354, EditorLanguage
 
 setcglob 0x4ECB48, SidebarButtonShoreX
 setcglob 0x4ECB84, SidebarButtonRiverX

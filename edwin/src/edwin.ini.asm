@@ -32,23 +32,25 @@ cextern SlowerScrollRate
 cextern ScrollRate
 cextern ScreenWidth
 cextern ScreenHeight
+cextern EditorLanguage
 cextern INIClass__Get_Int
 cextern INIClass__Get_String
 cextern INIClass__Get_Bool
 
-sstring settingsIni, "edwin.ini"
+gstring SettingsIni, "edwin.ini"
 
 sstring OptionsSection, "Options"
 sstring ScrollRateKey, "ScrollRate"
 sstring SlowerScrollRateKey, "SlowerScrollRate"
 sstring WidthKey, "EditorWidth"
 sstring HeightKey, "EditorHeight"
+sstring LanguageKey, "EditorLanguage"
 
 @PATCH 0x004607D2
-    mov edx, settingsIni
+    mov edx, SettingsIni
 @ENDPATCH
 
-@HACK 0x00461130, LoadRedalertIni
+@HACK 0x00461130, LoadSettingsIni
     INI_Get_Int OptionsSection, ScrollRateKey, 5
     mov dword[ScrollRate], eax
     
@@ -60,6 +62,9 @@ sstring HeightKey, "EditorHeight"
     
     INI_Get_Int OptionsSection, HeightKey, 400
     mov dword[ScreenHeight], eax
+    
+    INI_Get_Int OptionsSection, LanguageKey, 0
+    mov byte[EditorLanguage], al
     
     mov ecx, 1
     jmp 0x00461135

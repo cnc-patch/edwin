@@ -22,6 +22,7 @@ OBJS        = \
             src/slower_scrollrate.o \
             src/edwin.ini.o \
             src/hires.o \
+            src/mega_map.o \
             \
             sym.o \
             res/res.o
