@@ -33,6 +33,8 @@ cextern ScrollRate
 cextern ScreenWidth
 cextern ScreenHeight
 cextern EditorLanguage
+cextern MainMixPath
+cextern RedalertMixPath
 cextern INIClass__Get_Int
 cextern INIClass__Get_String
 cextern INIClass__Get_Bool
@@ -45,6 +47,8 @@ sstring SlowerScrollRateKey, "SlowerScrollRate"
 sstring WidthKey, "EditorWidth"
 sstring HeightKey, "EditorHeight"
 sstring LanguageKey, "EditorLanguage"
+sstring MainMixKey, "MainMix"
+sstring RedalertMixKey, "RedalertMix"
 
 @PATCH 0x004607D2
     mov edx, SettingsIni
@@ -54,7 +58,7 @@ sstring LanguageKey, "EditorLanguage"
     INI_Get_Int OptionsSection, ScrollRateKey, 5
     mov dword[ScrollRate], eax
     
-    INI_Get_Bool OptionsSection, SlowerScrollRateKey, true
+    INI_Get_Bool OptionsSection, SlowerScrollRateKey, 1
     mov byte[SlowerScrollRate], al
     
     INI_Get_Int OptionsSection, WidthKey, 640
@@ -65,6 +69,9 @@ sstring LanguageKey, "EditorLanguage"
     
     INI_Get_Int OptionsSection, LanguageKey, 0
     mov byte[EditorLanguage], al
+
+    INI_Get_String OptionsSection, MainMixKey, MainMixPath, MainMixPath, 256
+    INI_Get_String OptionsSection, RedalertMixKey, RedalertMixPath, RedalertMixPath, 256
     
     mov ecx, 1
     jmp 0x00461135

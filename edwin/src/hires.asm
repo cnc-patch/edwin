@@ -161,13 +161,15 @@ sint HighResWidthInTiles, 20
 @ENDHACK
 
 @HACK 0x0045799F, AdjustMiniMapBackground
-    mov eax, dword[ScreenWidth] ; FIX ME - mini map automatically aligns using buffer size width
-    sub eax, 640
+    mov eax, dword[HighResAddedWidth]
     add eax, 494
-    
-    ;mov eax, dword[HighResAddedWidth]
-    ;add eax, 494
     jmp 0x004579A4
+@ENDHACK
+
+@HACK 0x00457510, AdjustMiniMap
+    mov eax, dword[HighResAddedWidth]
+    add eax, 640
+    jmp 0x00457515
 @ENDHACK
 
 @HACK 0x0045DEAB, AdjustCellWidth
@@ -175,6 +177,20 @@ sint HighResWidthInTiles, 20
     mov ebx, 8
     jmp 0x0045DEB0
 @ENDHACK
+
+@REPLACE 0x00430F57, 0x00430F61, CurrentMapY
+    mov eax, dword[HighResAlignY]
+    add eax, 252
+    mov dword[ebp-0x0DC], eax
+    jmp 0x00430F61
+@ENDREPLACE
+
+@REPLACE 0x00430F79, 0x00430F83, CurrentMapX
+    mov eax, dword[HighResAlignX]
+    add eax, 320
+    mov dword[ebp-0x0E0], eax
+    jmp 0x00430F83
+@ENDREPLACE
 
 @PATCH 0x00422246 ;override GetScreenWidth call to avoid automatic align on the right side for credits
     mov eax, 640
@@ -248,6 +264,68 @@ sint HighResWidthInTiles, 20
     mov esi, dword[HighResAlignX]
     add esi, 320
     jmp 0x0045B6C1
+@ENDREPLACE
+
+@REPLACE 0x00432A99, 0x00432AA1, AdjustMapModifyDialogButtonsY
+    mov eax, dword[EAX+0x4AFBC4]
+    shl eax, cl
+    add eax, dword[HighResAlignY]
+    jmp 0x00432AA1
+@ENDREPLACE
+
+@REPLACE 0x00432AA9, 0x00432AB1, AdjustMapModifyDialogButtonsX
+    mov eax, dword[EAX+0x4AFBC0]
+    shl eax, cl
+    add eax, dword[HighResAlignX]
+    jmp 0x00432AB1
+@ENDREPLACE
+
+@REPLACE 0x00432ECE, 0x00432ED5, AdjustMapModifyDialogBackgroundY
+    mov ebx, 100
+    add ebx, dword[HighResAlignY]
+    jmp 0x00432ED5
+@ENDREPLACE
+
+@REPLACE 0x00432ED8, 0x00432EDF, AdjustMapModifyDialogBackgroundX
+    mov edx, 144
+    add edx, dword[HighResAlignX]
+    jmp 0x00432EDF
+@ENDREPLACE
+
+@REPLACE 0x00432EFF, 0x00432F06, AdjustMapModifyDialogCaptionX
+    mov esi, 352
+    add esi, dword[HighResAddedWidth]
+    jmp 0x00432F06
+@ENDREPLACE
+
+@REPLACE 0x00432F09, 0x00432F10, AdjustMapModifyDialogCaptionY
+    mov ebx, 100
+    add ebx, dword[HighResAlignY]
+    jmp 0x00432F10
+@ENDREPLACE
+
+@REPLACE 0x00432F67, 0x00432F6E, AdjustMapModifyDialogMapBackgroundY
+    mov edx, 144
+    add edx, dword[HighResAlignY]
+    jmp 0x00432F6E
+@ENDREPLACE
+
+@REPLACE 0x00432F71, 0x00432F78, AdjustMapModifyDialogMapBackgroundX
+    mov esi, 272
+    add esi, dword[HighResAlignX]
+    jmp 0x00432F78
+@ENDREPLACE
+
+@REPLACE 0x00432FAA, 0x00432FB1, AdjustMapModifyDialogMapShpY
+    mov eax, 192
+    add eax, dword[HighResAlignY]
+    jmp 0x00432FB1
+@ENDREPLACE
+
+@REPLACE 0x00432FB4, 0x00432FBB, AdjustMapModifyDialogMapShpX
+    mov ebx, 320
+    add ebx, dword[HighResAlignX]
+    jmp 0x00432FBB
 @ENDREPLACE
 
 @HACK 0x0045D6C2, AdjustSidebarButtons

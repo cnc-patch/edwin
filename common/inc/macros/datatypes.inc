@@ -16,6 +16,23 @@
     __SECT__
 %endmacro
 
+%macro gstring 3
+    [section .data]
+    cglobal %1
+    %1 db %2
+    %strlen ___StringLength %2
+    times ((%3) - (___StringLength)) db 0
+    __SECT__
+%endmacro
+
+%macro sstring 3
+    [section .data]
+    %1 db %2
+    %strlen ___StringLength %2
+    times ((%3) - (___StringLength)) db 0
+    __SECT__
+%endmacro
+
 %macro gint 2
     [section .data]
     cglobal %1
@@ -66,4 +83,17 @@
     [section .text]
     align 16, db 0xCC
     %1:
+%endmacro
+
+%macro gbytes 2
+    [section .bss]
+    cglobal %1
+    %1: resb %2
+    __SECT__
+%endmacro
+
+%macro sbytes 2
+    [section .bss]
+    %1: resb %2
+    __SECT__
 %endmacro

@@ -7,19 +7,19 @@
 ;1. Add the following key to a map to enable it: [Map]Theater=herpderp
 ;2. Create a mix file named "herpderp.mix"
 ;3. Create your custom tiles and give them as extension the name ".her" (the first 3 chars of the theater name)
-;4. Put your custom tiles into "herpderp.mix" and move "herpderp.mix" into "raed.mix"
+;4. Put your custom tiles into "herpderp.mix" and move "herpderp.mix" into "raed1.mix"
 
 cextern strcpy
 cextern strncpy
 cextern stricmp
 
-sbytes TheaterName, 50
-sbytes TheaterExtension, 5
+sstring TheaterName, "", 64
+sstring TheaterExtension, "", 5
 sstring TemperateTheater, "TEMPERATE"
 sstring SnowTheater, "SNOW"
 sbyte IsCustomTheater, 0
 
-@HACK 0x00409E8C, CheckTheaterType
+@HACK 0x00409E8C, LoadMap
     pushad
     
     mov byte[IsCustomTheater], 0
@@ -37,17 +37,17 @@ sbyte IsCustomTheater, 0
     mov eax, TemperateTheater
     call stricmp
     cmp eax, 0
-    jz .out
+    jz .IsOriginalTheater
     
     mov edx, TheaterName
     mov eax, SnowTheater
     call stricmp
     cmp eax, 0
-    jz .out
+    jz .IsOriginalTheater
     
     mov byte[IsCustomTheater], 1
 
-.out:
+.IsOriginalTheater:
     popad
     
     cmp byte[IsCustomTheater], 1
