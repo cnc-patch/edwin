@@ -2,6 +2,7 @@ RVA,label,comment
 00001003,___begtext,___begtext
 00019B12,CellClass::Unknown,
 000202F3,DrawShp,
+0002104C,ScaleFunction,
 00021814,GetScreenWidth,
 0002220D,DrawCredtisTabText,
 00022F74,DrawMenuBackgroundAndBorder,
@@ -12,13 +13,18 @@ RVA,label,comment
 00023A9D,,PosY
 00023AA0,,PosX
 00023AC2,Drawing_Unknown3,
-00023F60,DrawString_Unknown,
+00023F60,DrawText2?,
 00023FE2,DrawText,
 000244EC,GetScreenHeight,
+0002D472,,PosY
+0002D474,,PosX
+00030EB6,,PosY
+00030ED8,,PosX
 00030F57,,CurrentMapStringY
 00030F79,,CurrentMapStringX
-00031D44,ShowNewMapDialog?,
-000329EE,DialogModifyMapInfo?,
+000318D8,CreateLabel?,
+00031D44,NewMapDialog,
+000329EE,ModifyMapInfoDialog,
 00032A99,,PosY
 00032AAF,,PosX
 00032EB9,,Height
@@ -31,14 +37,26 @@ RVA,label,comment
 00032F71,,PosX
 00032FAA,,PosY
 00032FB4,,PosX
+0003394F,ChangeScrollRateDialog,
 0003395D,,Load ScrollRate
+00033A6F,,Width
+00033B0A,,ScrollBar width
+00033B0E,,ScrollBar Y
+00033B18,,ScrollBar X
+00033E6D,,Pos Y
+00033E7F,,Pos X
+00033E9A,,Pos Y
+00033EA5,,Pos X
 000342E0,,Save ScrollRate
 0003F756,DrawingAlignStuffUnknown,
 0003F764,,PosX
 0003F767,,PosY
 0003F76A,,Width
-00041DC8,MenuAutoAlignStuff?,
+00041DC8,MapLoadSaveDeleteDialog,
+00041E01,,BackgroundWidth
+00041E0E,,BackgroundHeight
 00043CE6,Calculate_Credits?,
+000481F5,TileBrowserDialog,
 000574CC,SetupMiniMap?,
 000576D6,Drawing_Unknown2,
 0005B4D6,ScrollClass::Unknown,
@@ -51,10 +69,12 @@ RVA,label,comment
 0005D961,,Sidebar draw selected tile
 000604FC,_WinMain,_WinMain
 00061271,DoDrawing,
+00061479,DrawCredtisTabBackground,
 00061526,DrawPassableTab,
 00061590,,PassableTabBackgroundX
 000615F6,,PassableTextX
 000616DE,DrawMapSizeTab,
+00065F5D,CreateButton?,
 00074278,W?Windows_Procedure$n(pnvuiuil)l,W?Windows_Procedure$n(pnvuiuil)l
 00075ED0,fptc,fptc
 0007A662,unknown_libname_6,unknown_libname_6
@@ -117,6 +137,7 @@ RVA,label,comment
 000889C9,mem_putc_,mem_putc_
 000889DC,vsprintf_,vsprintf_
 000889F1,strchr_,strchr_
+00088A08,DrawPCX?,
 0008A940,abs_,abs_
 0008A947,toupper_,toupper_
 0008C9E8,strupr_,strupr_

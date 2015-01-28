@@ -72,6 +72,19 @@
     __SECT__
 %endmacro
 
+%macro gbyte 3
+    [section .data]
+    cglobal %1
+    %1 times %3 db %2
+    __SECT__
+%endmacro
+
+%macro sbyte 3
+    [section .data]
+    %1 times %3 db %2
+    __SECT__
+%endmacro
+
 %macro gfunction 1
     [section .text]
     align 16, db 0xCC
@@ -83,17 +96,4 @@
     [section .text]
     align 16, db 0xCC
     %1:
-%endmacro
-
-%macro gbytes 2
-    [section .bss]
-    cglobal %1
-    %1: resb %2
-    __SECT__
-%endmacro
-
-%macro sbytes 2
-    [section .bss]
-    %1: resb %2
-    __SECT__
 %endmacro

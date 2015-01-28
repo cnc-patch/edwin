@@ -26,6 +26,7 @@ gint HighResAlignX, 0
 gint HighResAlignY, 0
 
 sint HighResWidthInTiles, 20
+sbyte TitleScreenLoaded, 0
 
 @REPLACE 0x00460929, 0x0046092F, InitHighRes
     pushad
@@ -178,27 +179,63 @@ sint HighResWidthInTiles, 20
     jmp 0x0045DEB0
 @ENDHACK
 
-@REPLACE 0x00430F57, 0x00430F61, CurrentMapY
+@REPLACE 0x00430F57, 0x00430F61, AdjustCurrentMapY
     mov eax, dword[HighResAlignY]
     add eax, 252
     mov dword[ebp-0x0DC], eax
     jmp 0x00430F61
 @ENDREPLACE
 
-@REPLACE 0x00430F79, 0x00430F83, CurrentMapX
+@REPLACE 0x00430F79, 0x00430F83, AdjustCurrentMapX
     mov eax, dword[HighResAlignX]
     add eax, 320
     mov dword[ebp-0x0E0], eax
     jmp 0x00430F83
 @ENDREPLACE
 
-@PATCH 0x00422246 ;override GetScreenWidth call to avoid automatic align on the right side for credits
-    mov eax, 640
-@ENDPATCH
+@REPLACE 0x00430EB6, 0x00430EC0, AdjustCurrentMapY2
+    mov eax, dword[HighResAlignY]
+    add eax, 252
+    mov dword[ebp-0x0D0], eax
+    jmp 0x00430EC0
+@ENDREPLACE
 
-@PATCH 0x00441DDE ;override GetScreenWidth call to avoid automatic scale/align for menus
-    mov eax, 640
-@ENDPATCH
+@REPLACE 0x00430ED8, 0x00430EE2, AdjustCurrentMapX2
+    mov eax, dword[HighResAlignX]
+    add eax, 320
+    mov dword[ebp-0x0D4], eax
+    jmp 0x00430EE2
+@ENDREPLACE
+
+@HACK 0x00422246, AdjustCreditsTabText
+    mov eax, dword[HighResAddedWidth]
+    add eax, 640
+    jmp 0x0042224B
+@ENDHACK
+
+@REPLACE 0x004614BD, 0x004614C4, AdjustCreditsTabBackground
+    mov ebx, dword[HighResAddedWidth]
+    add ebx, 320
+    jmp 0x004614C4
+@ENDREPLACE
+
+@HACK 0x00461B36, AdjustMapSizeTabBackground
+    xor ecx, ecx
+    mov ebx, dword[ebp-0x38]
+    cmp ebx, 480
+    jnz 0x00461B3B
+    add ebx, dword[HighResAddedWidth]
+    jmp 0x00461B3B
+@ENDHACK
+
+@HACK 0x00461B55, AdjustMapSizeTabText
+    push 0
+    mov eax, dword[ebp-0x30]
+    cmp eax, 560
+    jnz 0x00461B5A
+    add eax, dword[HighResAddedWidth]
+    jmp 0x00461B5A
+@ENDHACK
 
 @REPLACE 0x0045B5CF, 0x0045B5D6, AdjustScrolling1
     mov eax, dword[HighResAddedWidth]
@@ -327,6 +364,186 @@ sint HighResWidthInTiles, 20
     add ebx, dword[HighResAlignX]
     jmp 0x00432FBB
 @ENDREPLACE
+
+@PATCH 0x00441DDE ;AdjustMapLoadSaveDeleteDialog
+    mov eax, 640
+@ENDPATCH
+
+@REPLACE 0x00441E28, 0x00441E2D, AdjustMapLoadSaveDeleteDialogX
+    sar eax, 1
+    add eax, dword[HighResAlignX]
+    mov dword[ebp-0x28], eax
+    jmp 0x00441E2D
+@ENDREPLACE
+
+@REPLACE 0x00441E46, 0x00441E4C, AdjustMapLoadSaveDeleteDialogY
+    add eax, dword[HighResAlignY]
+    mov dword[ebp-0x0AC], eax
+    jmp 0x00441E4C
+@ENDREPLACE
+
+@REPLACE 0x004339E8, 0x004339F0, AdjustChangeScrollRateDialogButtonsY
+    mov eax, dword[eax+0x4AFCA8]
+    shl eax, cl
+    add eax, dword[HighResAlignY]
+    jmp 0x004339F0
+@ENDREPLACE
+
+@REPLACE 0x004339F8, 0x00433A00, AdjustChangeScrollRateDialogButtonsX
+    mov eax, dword[eax+0x4AFCA4]
+    shl eax, cl
+    add eax, dword[HighResAlignX]
+    jmp 0x00433A00
+@ENDREPLACE
+
+@REPLACE 0x00433B0E, 0x00433B15, AdjustChangeScrollRateDialogScrollbarY
+    mov eax, 160
+    add eax, dword[HighResAlignY]
+    jmp 0x00433B15
+@ENDREPLACE
+
+@REPLACE 0x00433B18, 0x00433B1F, AdjustChangeScrollRateDialogScrollbarX
+    mov ebx, 164
+    add ebx, dword[HighResAlignX]
+    jmp 0x00433B1F
+@ENDREPLACE
+
+@REPLACE 0x00433DCF, 0x00433DD6, AdjustChangeScrollRateDialogBackgroundY
+    mov ebx, 100
+    add ebx, dword[HighResAlignY]
+    jmp 0x00433DD6
+@ENDREPLACE
+
+@REPLACE 0x00433DD9, 0x00433DE0, AdjustChangeScrollRateDialogBackgroundX
+    mov edx, 144
+    add edx, dword[HighResAlignX]
+    jmp 0x00433DE0
+@ENDREPLACE
+
+@REPLACE 0x00433E0A, 0x00433E11, AdjustChangeScrollRateDialogCaptionY
+    mov ebx, 100
+    add ebx, dword[HighResAlignY]
+    jmp 0x00433E11
+@ENDREPLACE
+
+@REPLACE 0x00433E14, 0x00433E1B, AdjustChangeScrollRateDialogCaptionX
+    mov edx, 144
+    add edx, dword[HighResAlignX]
+    jmp 0x00433E1B
+@ENDREPLACE
+
+@REPLACE 0x00433E6D, 0x00433E74, AdjustChangeScrollRateDialogScrollRateTextY
+    mov eax, 146
+    add eax, dword[HighResAlignY]
+    jmp 0x00433E74
+@ENDREPLACE
+
+@REPLACE 0x00433E78, 0x00433E7F, AdjustChangeScrollRateDialogScrollRateTextX
+    mov eax, 164
+    add eax, dword[HighResAlignX]
+    jmp 0x00433E7F
+@ENDREPLACE
+
+@REPLACE 0x00433E9A, 0x00433EA1, AdjustChangeScrollRateDialogSlowerTextY
+    mov eax, 174
+    add eax, dword[HighResAlignY]
+    jmp 0x00433EA1
+@ENDREPLACE
+
+@REPLACE 0x00433EA5, 0x00433EAC, AdjustChangeScrollRateDialogSlowerTextX
+    mov eax, 164
+    add eax, dword[HighResAlignX]
+    jmp 0x00433EAC
+@ENDREPLACE
+
+@REPLACE 0x00433ED9, 0x00433EE0, AdjustChangeScrollRateDialogFasterTextY
+    mov eax, 172
+    add eax, dword[HighResAlignY]
+    jmp 0x00433EE0
+@ENDREPLACE
+
+@REPLACE 0x00433EE4, 0x00433EEB, AdjustChangeScrollRateDialogFasterTextX
+    mov eax, 476
+    add eax, dword[HighResAlignX]
+    jmp 0x00433EEB
+@ENDREPLACE
+
+@REPLACE 0x00431DF4, 0x00431DFC, AdjustNewMapDialogButtonsY
+    mov eax, dword[EAX+0x4AFAE0]
+    shl eax, cl
+    add eax, dword[HighResAlignY]
+    jmp 0x00431DFC
+@ENDREPLACE
+
+@REPLACE 0x00431E04, 0x00431E0C, AdjustNewMapDialogButtonsX
+    mov eax, dword[EAX+0x4AFADC]
+    shl eax, cl
+    add eax, dword[HighResAlignX]
+    jmp 0x00431E0C
+@ENDREPLACE
+
+@REPLACE 0x00432129, 0x00432130, AdjustNewMapDialogBackgroundY
+    mov ebx, 100
+    add ebx, dword[HighResAlignY]
+    jmp 0x00432130
+@ENDREPLACE
+
+@REPLACE 0x00432133, 0x0043213A, AdjustNewMapDialogBackgroundX
+    mov edx, 144
+    add edx, dword[HighResAlignX]
+    jmp 0x0043213A
+@ENDREPLACE
+
+@REPLACE 0x0043215A, 0x00432161, AdjustNewMapDialogCaptionX
+    mov esi, 352
+    add esi, dword[HighResAddedWidth]
+    jmp 0x00432161
+@ENDREPLACE
+
+@REPLACE 0x00432164, 0x0043216B, AdjustNewMapDialogCaptionY
+    mov ebx, 100
+    add ebx, dword[HighResAlignY]
+    jmp 0x0043216B
+@ENDREPLACE
+
+@REPLACE 0x004321A4, 0x004321AB, AdjustNewMapDialogMapBackgroundY
+    mov edx, 144
+    add edx, dword[HighResAlignY]
+    jmp 0x004321AB
+@ENDREPLACE
+
+@REPLACE 0x004321AE, 0x004321B5, AdjustNewMapDialogMapBackgroundX
+    mov esi, 272
+    add esi, dword[HighResAlignX]
+    jmp 0x004321B5
+@ENDREPLACE
+
+@REPLACE 0x004321E7, 0x004321EE, AdjustNewMapDialogMapShpY
+    mov edx, 192
+    add edx, dword[HighResAlignY]
+    jmp 0x004321EE
+@ENDREPLACE
+
+@REPLACE 0x004321F1, 0x004321F8, AdjustNewMapDialogMapShpX
+    mov ebx, 320
+    add ebx, dword[HighResAlignX]
+    jmp 0x004321F8
+@ENDREPLACE
+
+@HACK 0x0042D46F, AdjustTitleScreen
+    push dword[eax+4]
+    cmp byte[TitleScreenLoaded], 1
+    jz .out
+    mov byte[TitleScreenLoaded], 1
+    push dword[HighResAlignY]
+    push dword[HighResAlignX]
+    jmp 0x0042D476
+   
+.out:
+    push 0
+    push 0
+    jmp 0x0042D476
+@ENDHACK
 
 @HACK 0x0045D6C2, AdjustSidebarButtons
     push eax
