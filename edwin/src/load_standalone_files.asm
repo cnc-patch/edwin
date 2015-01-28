@@ -4,8 +4,8 @@
 
 cextern strcpy
 
-gstring RedalertMixPath, "raed1.mix", 256
-gstring MainMixPath, "raed.mix", 256
+gstring RedalertMixPath, "redalert.mix", 256
+gstring MainMixPath, "main.mix", 256
 
 sstring sfmainMix, "%c:", 256
 

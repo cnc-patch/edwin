@@ -530,7 +530,7 @@ sbyte TitleScreenLoaded, 0
     jmp 0x004321F8
 @ENDREPLACE
 
-@HACK 0x0042D46F, AdjustTitleScreen
+@REPLACE 0x0042D46F, 0x0042D476, AdjustTitleScreen
     push dword[eax+4]
     cmp byte[TitleScreenLoaded], 1
     jz .out
@@ -543,7 +543,7 @@ sbyte TitleScreenLoaded, 0
     push 0
     push 0
     jmp 0x0042D476
-@ENDHACK
+@ENDREPLACE
 
 @HACK 0x0045D6C2, AdjustSidebarButtons
     push eax

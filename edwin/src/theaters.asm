@@ -18,6 +18,7 @@ sstring TheaterExtension, "", 5
 sstring TemperateTheater, "TEMPERATE"
 sstring SnowTheater, "SNOW"
 sbyte IsCustomTheater, 0
+sbyte ChangeTerrainButtonClicked, 0
 
 @HACK 0x00409E8C, LoadMap
     pushad
@@ -165,4 +166,43 @@ sbyte IsCustomTheater, 0
     mov eax, 0x004AE868
     add ecx, eax
     jmp 0x00409ECD
+@ENDREPLACE
+
+@REPLACE 0x004332A3, 0x004332AA, ChangeMapInfoDialogTemperateButtonClicked
+    mov byte[ChangeTerrainButtonClicked], 1
+    mov dword[ebp-0x54], 0
+    jmp 0x004332AA
+@ENDREPLACE
+
+@REPLACE 0x004332F2, 0x004332F9, ChangeMapInfoDialogSnowButtonClicked
+    mov byte[ChangeTerrainButtonClicked], 1
+    mov dword[ebp-0x54], 1
+    jmp 0x004332F9
+@ENDREPLACE
+
+@REPLACE 0x0043387E, 0x00433887, ChangeMapInfoDialogChangeTerrainGraphics
+    cmp byte[IsCustomTheater], 1
+    jnz .out
+    cmp byte[ChangeTerrainButtonClicked], 1
+    jnz .out
+    mov byte[IsCustomTheater], 0
+    jmp 0x00433887
+    
+.out:
+    cmp eax, dword[ebp-0x48]
+    je 0x0043391E
+    jmp 0x00433887
+@ENDREPLACE
+
+@REPLACE 0x0043393A, 0x00433940, ChangeMapInfoDialogExit
+    mov byte[ChangeTerrainButtonClicked], 0
+    mov eax, dword[ebp-0x158]
+    jmp 0x00433940
+@ENDREPLACE
+
+@REPLACE 0x004468FE, 0x00446905, NewMapDialogTerrainTypeChanged
+    mov byte[IsCustomTheater], 0
+    movsx edx, byte[ebp-4]
+    mov eax, dword[ebp-0x54]
+    jmp 0x00446905
 @ENDREPLACE

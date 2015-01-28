@@ -4,6 +4,7 @@ RVA,label,comment
 000202F3,DrawShp,
 0002104C,ScaleFunction,
 00021814,GetScreenWidth,
+000218FC,CreateClickableRectangle?,
 0002220D,DrawCredtisTabText,
 00022F74,DrawMenuBackgroundAndBorder,
 00023549,DrawSquareWithBorder,
@@ -47,6 +48,7 @@ RVA,label,comment
 00033E7F,,Pos X
 00033E9A,,Pos Y
 00033EA5,,Pos X
+000342D7,,OkButtonClicked?
 000342E0,,Save ScrollRate
 0003F756,DrawingAlignStuffUnknown,
 0003F764,,PosX
@@ -57,6 +59,9 @@ RVA,label,comment
 00041E0E,,BackgroundHeight
 00043CE6,Calculate_Credits?,
 000481F5,TileBrowserDialog,
+00048274,,Pos Y
+00048AE4,,TileBrowser MaxItems width
+00048AFD,,TileBrowser MaxItems height
 000574CC,SetupMiniMap?,
 000576D6,Drawing_Unknown2,
 0005B4D6,ScrollClass::Unknown,
@@ -76,6 +81,8 @@ RVA,label,comment
 000616DE,DrawMapSizeTab,
 00065F5D,CreateButton?,
 00074278,W?Windows_Procedure$n(pnvuiuil)l,W?Windows_Procedure$n(pnvuiuil)l
+00074908,LoadTitleScreen,
+00074977,ReadPCX?,
 00075ED0,fptc,fptc
 0007A662,unknown_libname_6,unknown_libname_6
 0007A687,strncpy_,strncpy_
@@ -137,7 +144,6 @@ RVA,label,comment
 000889C9,mem_putc_,mem_putc_
 000889DC,vsprintf_,vsprintf_
 000889F1,strchr_,strchr_
-00088A08,DrawPCX?,
 0008A940,abs_,abs_
 0008A947,toupper_,toupper_
 0008C9E8,strupr_,strupr_

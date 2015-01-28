@@ -24,6 +24,7 @@ OBJS        = \
             src/hires.o \
             src/mega_map.o \
             src/theaters.o \
+            src/crash_fixes.o \
             \
             sym.o \
             res/res.o
