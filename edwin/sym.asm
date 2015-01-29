@@ -24,6 +24,8 @@ setcglob 0x4ECD20, SidebarButtonTerrainOreX
 setcglob 0x4ECD58, SidebarButtonTerrainGemX
 setcglob 0x4ECCE8, SidebarButtonTerrainWaterX
 
+setcglob 0x004D7D21, MapCopyPasteCellsWidth
+
 ; ### functions ###
 setcglob 0x00474278, OriginalWindowProcedure
 

@@ -38,6 +38,8 @@ RVA,label,comment
 00032F71,,PosX
 00032FAA,,PosY
 00032FB4,,PosX
+000332A3,,temperate button clicked
+000332F2,,snow button clicked
 0003394F,ChangeScrollRateDialog,
 0003395D,,Load ScrollRate
 00033A6F,,Width
@@ -62,6 +64,14 @@ RVA,label,comment
 00048274,,Pos Y
 00048AE4,,TileBrowser MaxItems width
 00048AFD,,TileBrowser MaxItems height
+0004A4A9,MapRightClickContextMenu,
+0004A983,CopySelectedMapArea,
+0004AB3E,,OreGems
+0004AB7F,PasteCopiedMapData,
+0004AD8D,,OreGems
+0004AE3C,PasteClipCopiedMapData,
+0004B125,UnselectCurrentSelection?,
+0004B178,,crash right click
 000574CC,SetupMiniMap?,
 000576D6,Drawing_Unknown2,
 0005B4D6,ScrollClass::Unknown,
@@ -84,6 +94,8 @@ RVA,label,comment
 00074908,LoadTitleScreen,
 00074977,ReadPCX?,
 00075ED0,fptc,fptc
+000796D8,,crash selection clear
+000796D9,,crash selectedtile
 0007A662,unknown_libname_6,unknown_libname_6
 0007A687,strncpy_,strncpy_
 0007A6AC,__assert_,__assert_
@@ -443,6 +455,11 @@ RVA,label,comment
 000B0978,VideoBackBuffer,
 000B5820,HardwareFills,
 000B6E68,dwTlsIndex,dwTlsIndex
+000D60BC,NewINIFormat_Type,
+000D7628,MapCopyPasteArray,
+000D762C,MapCopyPasteCellArray,
+000D7D21,MapCopyPasteCellsWidth,
+000D7D25,MapCopyPasteCellsHeight,
 000D7F9F,MiniMapTheaterColor,
 000D86F0,ScrollRate,
 000D8754,MapX,

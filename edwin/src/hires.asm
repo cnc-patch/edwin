@@ -19,6 +19,7 @@ cextern SidebarButtonTerrainClearX
 cextern SidebarButtonTerrainOreX
 cextern SidebarButtonTerrainGemX
 cextern SidebarButtonTerrainWaterX
+cextern MapCopyPasteCellsWidth
 
 gint HighResAddedWidth, 0
 gint HighResAddedHeight, 0
@@ -27,6 +28,7 @@ gint HighResAlignY, 0
 
 sint HighResWidthInTiles, 20
 sbyte TitleScreenLoaded, 0
+sbyte MapCopyPasteCellArray, 0, 126*126*5 ; Original size = 20*16*5 (640x400)
 
 @REPLACE 0x00460929, 0x0046092F, InitHighRes
     pushad
@@ -85,6 +87,100 @@ sbyte TitleScreenLoaded, 0
     push dword[ScreenHeight]
     push dword[ScreenWidth]
     jmp 0x00460DA0
+@ENDREPLACE
+
+@REPLACE 0x0044AAFA, 0x0044AB61, MapCopy
+    mov eax, dword[ebp-8]
+    mov edx, dword[ebp-0x14]
+    imul edx
+    imul eax, eax, 5
+    mov edx, eax
+    imul eax, dword[ebp-0x30], 5
+    add edx, eax
+    
+    mov eax, dword[ebp-0x34]
+    mov ax, word[eax+9]
+    mov word[edx+MapCopyPasteCellArray], ax
+    
+    mov eax, dword[ebp-0x34]
+    mov al, byte[eax+0x0B]
+    mov byte[edx+MapCopyPasteCellArray+2], al
+    
+    mov eax, dword[ebp-0x34]
+    mov al, byte[eax+0x0C]
+    mov byte[edx+MapCopyPasteCellArray+3], al
+    
+    mov eax, dword[ebp-0x34]
+    mov al, byte[eax+0x0D]
+    mov byte[edx+MapCopyPasteCellArray+4], al
+    
+    jmp 0x0044AAC7
+@ENDREPLACE
+
+@REPLACE 0x0044AD4F, 0x0044ADB1, MapPaste
+    push ebx
+
+    mov eax, dword[MapCopyPasteCellsWidth]
+    mov edx, dword[ebp-8]
+    imul edx
+    imul eax, eax, 5
+    mov edx, eax
+    mov edx, eax
+    imul eax, dword[ebp-0x34], 5
+    add eax, edx
+    mov ebx, eax
+    
+    mov dx, word[ebx+MapCopyPasteCellArray]
+    mov eax, dword[ebp-0x48]
+    mov word[eax+9], dx
+
+    mov dl, byte[ebx+MapCopyPasteCellArray+2]
+    mov eax, dword[ebp-0x48]
+    mov byte[eax+0x0B], dl
+    
+    mov dl, byte[ebx+MapCopyPasteCellArray+3]
+    mov eax, dword[ebp-0x48]
+    mov byte[eax+0x0C], dl
+    
+    mov dl, byte[ebx+MapCopyPasteCellArray+4]
+    mov eax, dword[ebp-0x48]
+    mov byte[eax+0x0D], dl
+    
+    pop ebx
+    jmp 0x0044ADB1
+@ENDREPLACE
+
+@REPLACE 0x0044B038, 0x0044B09A, MapPasteClip
+    push ebx
+
+    mov eax, dword[MapCopyPasteCellsWidth]
+    mov edx, dword[ebp-8]
+    imul edx
+    imul eax, eax, 5
+    mov edx, eax
+    mov edx, eax
+    imul eax, dword[ebp-0x34], 5
+    add eax, edx
+    mov ebx, eax
+    
+    mov dx, word[ebx+MapCopyPasteCellArray]
+    mov eax, dword[ebp-0x48]
+    mov word[eax+9], dx
+
+    mov dl, byte[ebx+MapCopyPasteCellArray+2]
+    mov eax, dword[ebp-0x48]
+    mov byte[eax+0x0B], dl
+    
+    mov dl, byte[ebx+MapCopyPasteCellArray+3]
+    mov eax, dword[ebp-0x48]
+    mov byte[eax+0x0C], dl
+    
+    mov dl, byte[ebx+MapCopyPasteCellArray+4]
+    mov eax, dword[ebp-0x48]
+    mov byte[eax+0x0D], dl
+    
+    pop ebx
+    jmp 0x0044B09A
 @ENDREPLACE
 
 @HACK 0x0044984C, AdjustTacticalAreaWidth
