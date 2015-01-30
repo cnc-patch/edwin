@@ -60,12 +60,16 @@ RVA,label,comment
 00041E01,,BackgroundWidth
 00041E0E,,BackgroundHeight
 00043CE6,Calculate_Credits?,
+00046A6D,LoadMapFile?,
+00046DF8,UnknownCnC95Dialog,
 000481F5,TileBrowserDialog,
 00048274,,Pos Y
 00048AE4,,TileBrowser MaxItems width
 00048AFD,,TileBrowser MaxItems height
 0004A4A9,MapRightClickContextMenu,
 0004A983,CopySelectedMapArea,
+0004AB2C,,X
+0004AB30,,Y
 0004AB3E,,OreGems
 0004AB7F,PasteCopiedMapData,
 0004AD8D,,OreGems
@@ -74,6 +78,7 @@ RVA,label,comment
 0004B178,,crash right click
 000574CC,SetupMiniMap?,
 000576D6,Drawing_Unknown2,
+0005AE02,SaveMap?,
 0005B4D6,ScrollClass::Unknown,
 0005CC71,SetupSidebarButtons,
 0005D0A3,,Left arrow button Y
@@ -457,15 +462,16 @@ RVA,label,comment
 000B6E68,dwTlsIndex,dwTlsIndex
 000D60BC,NewINIFormat_Type,
 000D7628,MapCopyPasteArray,
-000D762C,MapCopyPasteCellArray,
 000D7D21,MapCopyPasteCellsWidth,
 000D7D25,MapCopyPasteCellsHeight,
 000D7F9F,MiniMapTheaterColor,
 000D86F0,ScrollRate,
+000D874C,MapInfoStruct?,
 000D8754,MapX,
 000D8758,MapY,
 000D875C,MapWidth,
 000D8760,MapHeight,
+000D8764,MapMoney,
 000E0CB3,PassableButtonIsDownBool,
 000EA354,EditorLanguage,
 000ECB48,SidebarButtonShoreX,

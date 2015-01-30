@@ -22,7 +22,7 @@ OBJS        = \
             src/slower_scrollrate.o \
             src/edwin.ini.o \
             src/hires.o \
-            src/mega_map.o \
+            src/load_map_command_line.o \
             src/theaters.o \
             src/crash_fixes.o \
             \
