@@ -25,6 +25,7 @@ OBJS        = \
             src/load_map_command_line.o \
             src/theaters.o \
             src/crash_fixes.o \
+            src/allow_longer_filenames.o \
             \
             sym.o \
             res/res.o
