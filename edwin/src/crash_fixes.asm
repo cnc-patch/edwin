@@ -2,6 +2,8 @@
 %include "macros/hack.inc"
 %include "macros/datatypes.inc"
 
+sstring InternalMapNameBuffer, "", 512
+
 @PATCH 0x00474778 ;no assert
     retn
 @ENDPATCH
@@ -18,4 +20,15 @@
     cmp word[eax+9], 0x0FFFF
     je 0x00419657
     jmp 0x00419644
+@ENDREPLACE
+
+@REPLACE 0x00442E61, 0x00442E67, InternalNameTooLongCrash
+    mov edx, InternalMapNameBuffer
+    jmp 0x00442E67
+@ENDREPLACE
+
+@REPLACE 0x00442E90, 0x00442E96, InternalNameTooLongCrash1
+    mov byte[InternalMapNameBuffer+39], 0
+    mov edx, InternalMapNameBuffer
+    jmp 0x00442E96
 @ENDREPLACE

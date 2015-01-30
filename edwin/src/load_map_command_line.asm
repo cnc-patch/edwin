@@ -10,7 +10,7 @@ cextern strlen
 
 sstring MapPath, "", 512
 
-@HACK 0x0043C592, LoadMapOnStartup
+@REPLACE 0x0043C592, 0x0043C5A6, LoadMapOnStartup
     cmp byte[MapPath], 0
     jz .out
     mov edx, MapPath
@@ -24,7 +24,7 @@ sstring MapPath, "", 512
     mov eax, MapInfoStruct
     call LoadBlankMap
     jmp 0x0043C5A6
-@ENDHACK
+@ENDREPLACE
 
 @REPLACE 0x00496A7F, 0x00496A87, CopyCommandLine
     and edx, 0x000000FF

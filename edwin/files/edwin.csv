@@ -59,8 +59,10 @@ RVA,label,comment
 00041DC8,MapLoadSaveDeleteDialog,
 00041E01,,BackgroundWidth
 00041E0E,,BackgroundHeight
+00043026,GetInternalMapName,
 00043CE6,Calculate_Credits?,
-00046A6D,LoadMapFile?,
+00046672,LoadBlankMap,
+00046A6D,LoadMapFile,
 00046DF8,UnknownCnC95Dialog,
 000481F5,TileBrowserDialog,
 00048274,,Pos Y
@@ -78,6 +80,7 @@ RVA,label,comment
 0004B178,,crash right click
 000574CC,SetupMiniMap?,
 000576D6,Drawing_Unknown2,
+0005ABCC,ReadMapFile,
 0005AE02,SaveMap?,
 0005B4D6,ScrollClass::Unknown,
 0005CC71,SetupSidebarButtons,
@@ -128,6 +131,8 @@ RVA,label,comment
 0007CDB7,__wcpp_2_mod_register__,__wcpp_2_mod_register__
 0007DA49,unknown_libname_7,unknown_libname_7
 0007DA70,__wcpp_2_dtor_array_store__,__wcpp_2_dtor_array_store__
+0007DA90,nmallocWrapper1,
+0007DAA0,nmallocWrapper2,
 0007DAC5,_nfree_,_nfree_
 0007DB53,pickup_,pickup_
 0007DB67,_makepath_,_makepath_
@@ -183,6 +188,7 @@ RVA,label,comment
 0008F826,sscanf_,sscanf_
 0008F847,memicmp_,memicmp_
 0008FA27,strcspn_,strcspn_
+0008FA70,nmallocWrapper,
 0008FAF6,getcwd_,getcwd_
 0008FB6F,_dos_setdrive_,_dos_setdrive_
 0008FBBA,start,start
