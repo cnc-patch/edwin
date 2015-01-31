@@ -14,9 +14,10 @@ INCLUDES    = -Iinc/ -I../shared/inc/ -I../common/inc/
 
 LIBS        = -nostdlib
 OBJS        = \
+            src/keep_rules_ini_mods.o \
             src/window_procedure.o \
             src/no_disk_space_error.o \
-            src/load_standalone_files.o \
+            src/custom_mix_names.o \
             src/allow_multiple_instances.o \
             src/change_window_title.o \
             src/slower_scrollrate.o \
@@ -26,6 +27,7 @@ OBJS        = \
             src/theaters.o \
             src/crash_fixes.o \
             src/allow_longer_filenames.o \
+            src/improved_error_messages.o \
             \
             sym.o \
             res/res.o

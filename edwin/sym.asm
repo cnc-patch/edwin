@@ -44,6 +44,7 @@ setcglob 0x00485561, strcpy
 setcglob 0x0047A687, strncpy
 setcglob 0x0047FA83, stricmp
 setcglob 0x00485548, strlen
+setcglob 0x00485523, memcpy
 
 
 ; winapi

@@ -1,5 +1,9 @@
 RVA,label,comment
 00001003,___begtext,___begtext
+00005D9C,FileClass::Dispose?,
+00008AD8,FileClass:FileClass?,
+00008EFD,FileClass:Is_Available?,
+000098FF,INIClass::Save,INIClass::Save
 00019B12,CellClass::Unknown,
 000202F3,DrawShp,
 0002104C,ScaleFunction,
@@ -52,6 +56,9 @@ RVA,label,comment
 00033EA5,,Pos X
 000342D7,,OkButtonClicked?
 000342E0,,Save ScrollRate
+0003E318,INIClass::Dispose2?,
+0003E34C,INIClass::INIClass2?,
+0003E588,INIClass::INIClass?,
 0003F756,DrawingAlignStuffUnknown,
 0003F764,,PosX
 0003F767,,PosY
@@ -59,6 +66,9 @@ RVA,label,comment
 00041DC8,MapLoadSaveDeleteDialog,
 00041E01,,BackgroundWidth
 00041E0E,,BackgroundHeight
+0004290A,,Save
+00042997,,SaveMap
+00042B12,,DeleteMap
 00043026,GetInternalMapName,
 00043CE6,Calculate_Credits?,
 00046672,LoadBlankMap,
@@ -91,6 +101,8 @@ RVA,label,comment
 0005D93A,,Sidebar draw tile selection background
 0005D961,,Sidebar draw selected tile
 000604FC,_WinMain,_WinMain
+000610DF,LoadRedAlertIni,
+00061107,,Is_Available
 00061271,DoDrawing,
 00061479,DrawCredtisTabBackground,
 00061526,DrawPassableTab,
@@ -108,6 +120,8 @@ RVA,label,comment
 0007A687,strncpy_,strncpy_
 0007A6AC,__assert_,__assert_
 0007A6CC,__wcpp_2_dtor_array__,__wcpp_2_dtor_array__
+0007A9F8,INIClass::Dispose?,
+0007AAAA,INIClass::Load?,
 0007B21A,"const INIClass::Get_Entry(char *,int)",
 0007B29A,"INIClass::Put_UUBlock(char *,void *,int)",
 0007B3BE,"const INIClass::Get_UUBlock(char *,void *,int)",
@@ -129,6 +143,8 @@ RVA,label,comment
 0007CDA7,W?fs_init_traverse$n(pn$__1j2o3bSTAB_TRAVERSE$$pn$rw_dtreg$$)v,W?fs_init_traverse$n(pn$__1j2o3bSTAB_TRAVERSE$$pn$rw_dtreg$$)v
 0007CDAC,W?init$n()v,W?init$n()v
 0007CDB7,__wcpp_2_mod_register__,__wcpp_2_mod_register__
+0007CDE5,FileClass:FileClass2?,
+0007D0EB,FileClass::Is_Available2?,
 0007DA49,unknown_libname_7,unknown_libname_7
 0007DA70,__wcpp_2_dtor_array_store__,__wcpp_2_dtor_array_store__
 0007DA90,nmallocWrapper1,
@@ -176,6 +192,7 @@ RVA,label,comment
 0008CBF2,_dos_findnext_,_dos_findnext_
 0008CC3A,_dos_findclose_,_dos_findclose_
 0008D690,strcmp_,strcmp_
+0008D731,DeleteFile,
 0008D74A,byteswap_,byteswap_
 0008D770,med3_,med3_
 0008D7C8,qsort_,qsort_
