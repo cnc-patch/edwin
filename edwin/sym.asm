@@ -36,6 +36,7 @@ setcglob 0x0047B945, INIClass__Put_String
 setcglob 0x0047BAA4, INIClass__Get_String
 setcglob 0x0047BB68, INIClass__Put_Bool
 setcglob 0x0047BBBC, INIClass__Get_Bool
+setcglob 0x0047AA3A, INIClass__ClearSection
 
 setcglob 0x00446672, LoadBlankMap
 setcglob 0x00446A6D, LoadMapFile

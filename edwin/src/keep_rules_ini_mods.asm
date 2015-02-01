@@ -6,12 +6,6 @@
 gbyte INIClass__LoadedMap, 0, 64
 gbyte IsLoadedMap, 0
 
-sbyte UseCustomTutorialText, 0
-sbyte IsCoopMode, 0
-sstring BasicSection, "Basic"
-sstring UseCustomTutorialTextKey, "UseCustomTutorialText"
-sstring IsCoopModeKey, "IsCoopMode"
-
 @REPLACE 0x0045AC58, 0x0045AC5E, ReadMap1
     cmp byte[IsLoadedMap], 1
     jnz .out
@@ -74,16 +68,10 @@ sstring IsCoopModeKey, "IsCoopMode"
 
 @CLEAR 0x0045ADE3, 0x90, 0x0045ADE8 ;ReadMap - Do not erase
 
-@REPLACE 0x0045AE6E, 0x0045AE7F, LoadCustomBasicSectionKeys
+@REPLACE 0x0045AE6E, 0x0045AE7F, SaveMap1
     cmp byte[IsLoadedMap], 1
     jnz .out
     mov dword[ebp-0x0A0], INIClass__LoadedMap
-    
-    INI_Get_Bool INIClass__LoadedMap, BasicSection, UseCustomTutorialTextKey, 0
-    mov byte[UseCustomTutorialText], al
-    INI_Get_Bool INIClass__LoadedMap, BasicSection, IsCoopModeKey, 0
-    mov byte[IsCoopMode], al
-    
     jmp 0x0045AE7F
     
 .out:
@@ -93,13 +81,10 @@ sstring IsCoopModeKey, "IsCoopMode"
     jmp 0x0045AE7F
 @ENDREPLACE
 
-@REPLACE 0x0045AEC3, 0x0045AEC9, SaveMap2
+@REPLACE 0x0045AEC3, 0x0045AEC9, DoNotClearBasicSection
     cmp byte[IsLoadedMap], 1
-    jnz .out
-    mov eax, INIClass__LoadedMap
-    jmp 0x0045AEC9
-    
-.out:
+    jz 0x0045AECE
+
     lea eax, [ebp-0x9C]
     jmp 0x0045AEC9
 @ENDREPLACE
@@ -119,12 +104,7 @@ sstring IsCoopModeKey, "IsCoopMode"
     cmp byte[IsLoadedMap], 1
     jnz .out
     mov eax, INIClass__LoadedMap
-    call INIClass__Put_String
-    
-    INI_Put_Bool_Ptr INIClass__LoadedMap, BasicSection, UseCustomTutorialTextKey, UseCustomTutorialText
-    INI_Put_Bool_Ptr INIClass__LoadedMap, BasicSection, IsCoopModeKey, IsCoopMode
-    
-    jmp 0x0045AF0A
+    jmp 0x0045AF05
     
 .out:
     lea eax, [ebp-0x9C]
