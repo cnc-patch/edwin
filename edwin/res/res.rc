@@ -1,2 +1,28 @@
-1 ICON "edwin.ico"
+1 VERSIONINFO
+FILEVERSION     1,0,1,0
+PRODUCTVERSION  1,0,1,0
+{
+    BLOCK "StringFileInfo"
+    {
+        BLOCK "040904B0"
+        {
+            VALUE "CompanyName", "Westwood Studios - Patched by FunkyFr3sh"
+            VALUE "FileDescription", "Map Editor for Command & Conquer : Red Alert"
+            VALUE "FileVersion", "1.0.1.0 (2015)"
+            VALUE "InternalName", "edwin"
+            VALUE "LegalCopyright", ""
+            VALUE "LegalTrademarks", ""
+            VALUE "OriginalFileName", "edwin.exe"
+            VALUE "ProductName", "Map Editor for Command & Conquer : Red Alert"
+            VALUE "ProductVersion", "1.0.1.0"
+            VALUE "Comments", "Get the latest version here: http://cnc-comm.com/community/index.php?topic=3476"
+        }
+    }
 
+    BLOCK "VarFileInfo"
+    {
+        VALUE "Translation",  0x0409, 0x04B0
+    }
+}
+
+1 ICON "edwin.ico"
