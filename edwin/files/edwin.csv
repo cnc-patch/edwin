@@ -23,6 +23,7 @@ RVA,label,comment
 000244EC,GetScreenHeight,
 0002D472,,PosY
 0002D474,,PosX
+00030918,OptionsDialog,
 00030EB6,,PosY
 00030ED8,,PosX
 00030F57,,CurrentMapStringY
@@ -88,6 +89,7 @@ RVA,label,comment
 0004AE3C,PasteClipCopiedMapData,
 0004B125,UnselectCurrentSelection?,
 0004B178,,crash right click
+000502CD,ShowMessageBoxYesNo,
 000574CC,SetupMiniMap?,
 000576D6,Drawing_Unknown2,
 0005ABCC,ReadMapFile,
@@ -121,6 +123,7 @@ RVA,label,comment
 0007A6AC,__assert_,__assert_
 0007A6CC,__wcpp_2_dtor_array__,__wcpp_2_dtor_array__
 0007A9F8,INIClass::Dispose?,
+0007AA3A,INIClass::ClearSection,
 0007AAAA,INIClass::Load?,
 0007B21A,"const INIClass::Get_Entry(char *,int)",
 0007B29A,"INIClass::Put_UUBlock(char *,void *,int)",

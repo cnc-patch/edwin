@@ -1,7 +1,6 @@
 %include "macros/patch.inc"
 %include "macros/hack.inc"
 %include "macros/datatypes.inc"
-%include "ini.inc"
 
 gbyte INIClass__LoadedMap, 0, 64
 gbyte IsLoadedMap, 0
@@ -100,7 +99,7 @@ gbyte IsLoadedMap, 0
     jmp 0x0045AEEA
 @ENDREPLACE
 
-@REPLACE 0x0045AEFF, 0x0045AF05, SaveCustomBasicSectionKeys
+@REPLACE 0x0045AEFF, 0x0045AF05, SaveMap4
     cmp byte[IsLoadedMap], 1
     jnz .out
     mov eax, INIClass__LoadedMap

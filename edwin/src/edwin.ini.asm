@@ -1,32 +1,7 @@
 %include "macros/patch.inc"
 %include "macros/hack.inc"
 %include "macros/datatypes.inc"
-
-%macro INI_Get_Int 3 ; args: <section>, <key>, <default>
-    MOV ECX, DWORD %3
-    MOV EBX, DWORD %2
-    MOV EDX, DWORD %1
-    LEA EAX, [EBP-0x1C]
-    CALL INIClass__Get_Int
-%endmacro
-
-%macro INI_Get_String 5 ; args: <section>, <key>, <default>, <dst>, <dst_len>
-    PUSH %5
-    PUSH %4
-    MOV ECX, DWORD %3
-    MOV EBX, DWORD %2
-    MOV EDX, DWORD %1
-    LEA EAX, [EBP-0x1C]
-    CALL INIClass__Get_String
-%endmacro
-
-%macro INI_Get_Bool 3 ; args: <section>, <key>, <default>
-    MOV ECX, DWORD %3
-    MOV EBX, DWORD %2
-    MOV EDX, DWORD %1
-    LEA EAX, [EBP-0x1C]
-    CALL INIClass__Get_Bool
-%endmacro
+%include "INIClass.inc"
 
 cextern SlowerScrollRate
 cextern ScrollRate
@@ -35,11 +10,14 @@ cextern ScreenHeight
 cextern EditorLanguage
 cextern MainMixPath
 cextern RedalertMixPath
-cextern INIClass__Get_Int
-cextern INIClass__Get_String
-cextern INIClass__Get_Bool
+cextern VideoBackBuffer
+cextern HardwareFills
+cextern FileClass__FileClass
+cextern INIClass__Save
 
-gstring SettingsIni, "edwin.ini"
+gstring SettingsIniPath, "edwin.ini"
+gbyte INIClass__SettingsIni, 0, 64
+gbyte FileClass__SettingsIni, 0, 128
 
 sstring OptionsSection, "Options"
 sstring ScrollRateKey, "ScrollRate"
@@ -49,30 +27,90 @@ sstring HeightKey, "EditorHeight"
 sstring LanguageKey, "EditorLanguage"
 sstring MainMixKey, "MainMix"
 sstring RedalertMixKey, "RedalertMix"
+sstring VideoBackBufferKey, "VideoBackBuffer"
+sstring HardwareFillsKey, "HardwareFills"
 
 @PATCH 0x004607D2
-    mov edx, SettingsIni
+    mov edx, SettingsIniPath
 @ENDPATCH
 
-@HACK 0x00461130, LoadSettingsIni
-    INI_Get_Int OptionsSection, ScrollRateKey, 5
+@REPLACE 0x00461130, 0x004611A2, LoadSettingsIni
+    INI_Get_Int INIClass__SettingsIni, OptionsSection, ScrollRateKey, 3
     mov dword[ScrollRate], eax
     
-    INI_Get_Bool OptionsSection, SlowerScrollRateKey, 1
+    INI_Get_Bool INIClass__SettingsIni, OptionsSection, SlowerScrollRateKey, byte[SlowerScrollRate]
     mov byte[SlowerScrollRate], al
     
-    INI_Get_Int OptionsSection, WidthKey, 640
+    INI_Get_Int INIClass__SettingsIni, OptionsSection, WidthKey, 640
     mov dword[ScreenWidth], eax
     
-    INI_Get_Int OptionsSection, HeightKey, 400
+    INI_Get_Int INIClass__SettingsIni, OptionsSection, HeightKey, 400
     mov dword[ScreenHeight], eax
     
-    INI_Get_Int OptionsSection, LanguageKey, 0
+    INI_Get_Int INIClass__SettingsIni, OptionsSection, LanguageKey, 0
     mov byte[EditorLanguage], al
 
-    INI_Get_String OptionsSection, MainMixKey, MainMixPath, MainMixPath, 256
-    INI_Get_String OptionsSection, RedalertMixKey, RedalertMixPath, RedalertMixPath, 256
+    INI_Get_String INIClass__SettingsIni, OptionsSection, MainMixKey, MainMixPath, MainMixPath, 256
+    INI_Get_String INIClass__SettingsIni, OptionsSection, RedalertMixKey, RedalertMixPath, RedalertMixPath, 256
     
-    mov ecx, 1
-    jmp 0x00461135
-@ENDHACK
+    INI_Get_Bool INIClass__SettingsIni, OptionsSection, VideoBackBufferKey, 1
+    mov byte[VideoBackBuffer], al
+    
+    INI_Get_Bool INIClass__SettingsIni, OptionsSection, HardwareFillsKey, 0
+    mov byte[HardwareFills], al
+    
+    jmp 0x004611A2
+@ENDREPLACE
+
+gfunction SaveSettingsIni
+    INI_Put_Int INIClass__SettingsIni, OptionsSection, ScrollRateKey, dword[ScrollRate]
+    INI_Put_Bool INIClass__SettingsIni, OptionsSection, SlowerScrollRateKey, byte[SlowerScrollRate]
+    INI_Put_Int INIClass__SettingsIni, OptionsSection, WidthKey, dword[ScreenWidth]
+    INI_Put_Int INIClass__SettingsIni, OptionsSection, HeightKey, dword[ScreenHeight]
+    xor eax, eax
+    mov al, byte[EditorLanguage]
+    INI_Put_Int INIClass__SettingsIni, OptionsSection, LanguageKey, eax
+    INI_Put_String INIClass__SettingsIni, OptionsSection, MainMixKey, MainMixPath
+    INI_Put_String INIClass__SettingsIni, OptionsSection, RedalertMixKey, RedalertMixPath
+    INI_Put_Bool INIClass__SettingsIni, OptionsSection, VideoBackBufferKey, byte[VideoBackBuffer]
+    INI_Put_Bool INIClass__SettingsIni, OptionsSection, HardwareFillsKey, byte[HardwareFills]
+
+    mov edx, SettingsIniPath
+    mov eax, FileClass__SettingsIni
+    call FileClass__FileClass
+    
+    mov edx, FileClass__SettingsIni
+    mov eax, INIClass__SettingsIni
+    call INIClass__Save
+    retn
+    
+@CLEAR 0x00409987, 0x90, 0x0040999F ; Do not write digest
+
+@REPLACE 0x004317B1, 0x004317BB, EditorExit
+    pushad
+    call SaveSettingsIni
+    popad
+
+    mov dword[0x4E1474], 0
+    jmp 0x004317BB
+@ENDREPLACE
+
+@REPLACE 0x004342E0, 0x004342E5, ChangeScrollRateDialogOkClick
+    mov dword[ScrollRate], eax
+    pushad
+    call SaveSettingsIni
+    popad
+    jmp 0x004342E5
+@ENDREPLACE
+
+@REPLACE 0x00461116, 0x0046111E, MakeSettingsIniGlobal1
+    mov eax, INIClass__SettingsIni
+    call 0x0043E588
+    jmp 0x0046111E
+@ENDREPLACE
+
+@REPLACE 0x00461128, 0x00461130, MakeSettingsIniGlobal2
+    mov eax, INIClass__SettingsIni
+    call 0x0047AAAA
+    jmp 0x00461130
+@ENDREPLACE

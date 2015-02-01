@@ -7,6 +7,8 @@ setcglob 0x004D86F0, ScrollRate
 setcglob 0x004AF944, ScreenWidth
 setcglob 0x004AF948, ScreenHeight
 setcglob 0x004EA354, EditorLanguage
+setcglob 0x004B0978, VideoBackBuffer
+setcglob 0x004B5820, HardwareFills
 
 setcglob 0x4ECB48, SidebarButtonShoreX
 setcglob 0x4ECB84, SidebarButtonRiverX
@@ -37,6 +39,10 @@ setcglob 0x0047BAA4, INIClass__Get_String
 setcglob 0x0047BB68, INIClass__Put_Bool
 setcglob 0x0047BBBC, INIClass__Get_Bool
 setcglob 0x0047AA3A, INIClass__ClearSection
+setcglob 0x004098FF, INIClass__Save
+
+
+setcglob 0x0047CDE5, FileClass__FileClass
 
 setcglob 0x00446672, LoadBlankMap
 setcglob 0x00446A6D, LoadMapFile
@@ -46,6 +52,7 @@ setcglob 0x0047A687, strncpy
 setcglob 0x0047FA83, stricmp
 setcglob 0x00485548, strlen
 setcglob 0x00485523, memcpy
+setcglob 0x77C17C60, strstr
 
 
 ; winapi

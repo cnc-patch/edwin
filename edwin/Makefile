@@ -18,7 +18,7 @@ OBJS        = \
             src/window_procedure.o \
             src/no_disk_space_error.o \
             src/custom_mix_names.o \
-            src/allow_multiple_instances.o \
+            src/multiple_instances.o \
             src/change_window_title.o \
             src/slower_scrollrate.o \
             src/edwin.ini.o \
@@ -26,7 +26,7 @@ OBJS        = \
             src/load_map_command_line.o \
             src/theaters.o \
             src/crash_fixes.o \
-            src/allow_longer_filenames.o \
+            src/longer_filenames.o \
             src/improved_error_messages.o \
             \
             sym.o \
