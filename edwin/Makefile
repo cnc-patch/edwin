@@ -14,6 +14,7 @@ INCLUDES    = -Iinc/ -I../shared/inc/ -I../common/inc/
 
 LIBS        = -nostdlib
 OBJS        = \
+            src/single_proc_affinity.o \
             src/keep_rules_ini_mods.o \
             src/window_procedure.o \
             src/no_disk_space_error.o \

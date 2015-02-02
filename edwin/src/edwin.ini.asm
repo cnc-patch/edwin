@@ -12,8 +12,11 @@ cextern MainMixPath
 cextern RedalertMixPath
 cextern VideoBackBuffer
 cextern HardwareFills
+cextern SingleProcAffinity
 cextern FileClass__FileClass
 cextern INIClass__Save
+cextern _imp__CreateFileA
+cextern _imp__CloseHandle
 
 gstring SettingsIniPath, "edwin.ini"
 gbyte INIClass__SettingsIni, 0, 64
@@ -29,10 +32,7 @@ sstring MainMixKey, "MainMix"
 sstring RedalertMixKey, "RedalertMix"
 sstring VideoBackBufferKey, "VideoBackBuffer"
 sstring HardwareFillsKey, "HardwareFills"
-
-@PATCH 0x004607D2
-    mov edx, SettingsIniPath
-@ENDPATCH
+sstring SingleProcAffinityKey, "SingleProcAffinity"
 
 @REPLACE 0x00461130, 0x004611A2, LoadSettingsIni
     INI_Get_Int INIClass__SettingsIni, OptionsSection, ScrollRateKey, 3
@@ -59,6 +59,9 @@ sstring HardwareFillsKey, "HardwareFills"
     INI_Get_Bool INIClass__SettingsIni, OptionsSection, HardwareFillsKey, 0
     mov byte[HardwareFills], al
     
+    INI_Get_Bool INIClass__SettingsIni, OptionsSection, SingleProcAffinityKey, byte[SingleProcAffinity]
+    mov byte[SingleProcAffinity], al
+    
     jmp 0x004611A2
 @ENDREPLACE
 
@@ -74,6 +77,7 @@ gfunction SaveSettingsIni
     INI_Put_String INIClass__SettingsIni, OptionsSection, RedalertMixKey, RedalertMixPath
     INI_Put_Bool INIClass__SettingsIni, OptionsSection, VideoBackBufferKey, byte[VideoBackBuffer]
     INI_Put_Bool INIClass__SettingsIni, OptionsSection, HardwareFillsKey, byte[HardwareFills]
+    INI_Put_Bool INIClass__SettingsIni, OptionsSection, SingleProcAffinityKey, byte[SingleProcAffinity]
 
     mov edx, SettingsIniPath
     mov eax, FileClass__SettingsIni
@@ -97,6 +101,7 @@ gfunction SaveSettingsIni
 
 @REPLACE 0x004342E0, 0x004342E5, ChangeScrollRateDialogOkClick
     mov dword[ScrollRate], eax
+    
     pushad
     call SaveSettingsIni
     popad
@@ -113,4 +118,25 @@ gfunction SaveSettingsIni
     mov eax, INIClass__SettingsIni
     call 0x0047AAAA
     jmp 0x00461130
+@ENDREPLACE
+
+@REPLACE 0x004607D2, 0x004607D7, SetupSettingsIni
+    pushad
+    push 0
+    push 0x80
+    push 1
+    push 0
+    push 1
+    push 0x80000000
+    push SettingsIniPath
+    call [_imp__CreateFileA] ; Create the file if it does not exist to avoid freezing
+    cmp eax, -1
+    jz .InvalidHandle
+    push eax
+    call [_imp__CloseHandle]
+    
+.InvalidHandle:
+    popad
+    mov edx, SettingsIniPath
+    jmp 0x004607D7
 @ENDREPLACE

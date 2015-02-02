@@ -9,6 +9,8 @@ setcglob 0x004AF948, ScreenHeight
 setcglob 0x004EA354, EditorLanguage
 setcglob 0x004B0978, VideoBackBuffer
 setcglob 0x004B5820, HardwareFills
+setcglob 0x004D7D21, MapCopyPasteCellsWidth
+setcglob 0x004D874C, MapInfoStruct
 
 setcglob 0x4ECB48, SidebarButtonShoreX
 setcglob 0x4ECB84, SidebarButtonRiverX
@@ -26,12 +28,7 @@ setcglob 0x4ECD20, SidebarButtonTerrainOreX
 setcglob 0x4ECD58, SidebarButtonTerrainGemX
 setcglob 0x4ECCE8, SidebarButtonTerrainWaterX
 
-setcglob 0x004D7D21, MapCopyPasteCellsWidth
-setcglob 0x004D874C, MapInfoStruct
-
 ; ### functions ###
-setcglob 0x00474278, OriginalWindowProcedure
-
 setcglob 0x0047B6F7, INIClass__Put_Int
 setcglob 0x0047B7A9, INIClass__Get_Int
 setcglob 0x0047B945, INIClass__Put_String
@@ -40,24 +37,25 @@ setcglob 0x0047BB68, INIClass__Put_Bool
 setcglob 0x0047BBBC, INIClass__Get_Bool
 setcglob 0x0047AA3A, INIClass__ClearSection
 setcglob 0x004098FF, INIClass__Save
-
-
 setcglob 0x0047CDE5, FileClass__FileClass
-
 setcglob 0x00446672, LoadBlankMap
 setcglob 0x00446A6D, LoadMapFile
+setcglob 0x00474278, OriginalWindowProcedure
 
 setcglob 0x00485561, strcpy
 setcglob 0x0047A687, strncpy
 setcglob 0x0047FA83, stricmp
 setcglob 0x00485548, strlen
 setcglob 0x00485523, memcpy
-setcglob 0x77C17C60, strstr
-
+setcglob 0x0048CA0D, strstr
 
 ; winapi
-;setcglob 0x, _imp__LoadLibraryA
-
+setcglob 0x005401F0, _imp__CreateFileA
+setcglob 0x005401EC, _imp__CloseHandle
+setcglob 0x00540428, _imp__LoadLibraryA
+setcglob 0x00540418, _imp__GetProcAddress
+setcglob 0x0054020C, _imp__GetCurrentProcess
+        
 ;Address  Ordinal Name                      Library 
 ;-------  ------- ----                      ------- 
 ;00540108         ClipCursor                USER32  
@@ -85,15 +83,12 @@ setcglob 0x77C17C60, strstr
 ;00540160         TranslateMessage          USER32  
 ;00540164         UpdateWindow              USER32  
 ;00540168         VkKeyScanA                USER32  
-;005401EC         CloseHandle               KERNEL32
-;005401F0         CreateFileA               KERNEL32
 ;005401F4         CreateThread              KERNEL32
 ;005401F8         DeleteCriticalSection     KERNEL32
 ;005401FC         DeleteFileA               KERNEL32
 ;00540200         DuplicateHandle           KERNEL32
 ;00540204         EnterCriticalSection      KERNEL32
 ;00540208         ExitProcess               KERNEL32
-;0054020C         GetCurrentProcess         KERNEL32
 ;00540210         GetCurrentThread          KERNEL32
 ;00540214         GetDriveTypeA             KERNEL32
 ;00540218         GetFileSize               KERNEL32
@@ -153,11 +148,9 @@ setcglob 0x77C17C60, strstr
 ;0054040C         GetLocalTime              KERNEL32
 ;00540410         GetModuleFileNameA        KERNEL32
 ;00540414         GetModuleHandleA          KERNEL32
-;00540418         GetProcAddress            KERNEL32
 ;0054041C         GetStdHandle              KERNEL32
 ;00540420         GetTimeZoneInformation    KERNEL32
 ;00540424         GetVersion                KERNEL32
-;00540428         LoadLibraryA              KERNEL32
 ;0054042C         LocalFileTimeToFileTime   KERNEL32
 ;00540430         ReadConsoleInputA         KERNEL32
 ;00540434         ReadFile                  KERNEL32
