@@ -80,7 +80,10 @@ RVA,label,comment
 00048AE4,,TileBrowser MaxItems width
 00048AFD,,TileBrowser MaxItems height
 0004A4A9,MapRightClickContextMenu,
+0004A737,FillSelectedArea,
 0004A983,CopySelectedMapArea,
+0004AAB5,,Y
+0004AAD0,,X
 0004AB2C,,X
 0004AB30,,Y
 0004AB3E,,OreGems
@@ -498,6 +501,9 @@ RVA,label,comment
 000D875C,MapWidth,
 000D8760,MapHeight,
 000D8764,MapMoney,
+000D8768,MapDataPointer?,
+000D88BF,SelectedAreaTopLeftCell?,
+000D88C1,SelectedAreaBottomRightCell?,
 000E0CB3,PassableButtonIsDownBool,
 000EA354,EditorLanguage,
 000ECB48,SidebarButtonShoreX,
