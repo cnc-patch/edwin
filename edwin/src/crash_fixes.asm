@@ -23,6 +23,8 @@ sstring InternalMapNameBuffer, "", 512
 @ENDREPLACE
 
 @REPLACE 0x00442E61, 0x00442E67, InternalNameTooLongCrash
+    mov byte[InternalMapNameBuffer], "x"
+    mov byte[InternalMapNameBuffer+1], 0
     mov edx, InternalMapNameBuffer
     jmp 0x00442E67
 @ENDREPLACE

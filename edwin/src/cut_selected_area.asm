@@ -4,6 +4,8 @@
 
 cextern FillSelectedArea
 cextern MapInfoStruct
+cextern SelectedAreaTopLeftCell
+cextern SelectedAreaBottomRightCell
 
 sbyte MapCut, 0
 
@@ -12,6 +14,10 @@ sbyte MapCut, 0
     jmp 0x0044A254
 
 .cut:
+    cmp dword[SelectedAreaTopLeftCell], 0
+    jz 0x0044A19A
+    cmp dword[SelectedAreaBottomRightCell], 0
+    jz 0x0044A19A
     mov byte[MapCut], 1
     jmp 0x0044A162
 @ENDREPLACE

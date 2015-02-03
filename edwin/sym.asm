@@ -11,6 +11,8 @@ setcglob 0x004B0978, VideoBackBuffer
 setcglob 0x004B5820, HardwareFills
 setcglob 0x004D7D21, MapCopyPasteCellsWidth
 setcglob 0x004D874C, MapInfoStruct
+setcglob 0x004D88BF, SelectedAreaTopLeftCell
+setcglob 0x004D88C1, SelectedAreaBottomRightCell
 
 setcglob 0x4ECB48, SidebarButtonShoreX
 setcglob 0x4ECB84, SidebarButtonRiverX
