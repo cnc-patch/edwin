@@ -32,7 +32,14 @@ sbyte MapCopyPasteCellArray, 0, 126*126*5 ; Original size = 20*16*5 (640x400)
 
 @REPLACE 0x00460929, 0x0046092F, InitHighRes
     pushad
+    cmp dword[ScreenWidth], 1366
+    jnz .Not1366x768
+    cmp dword[ScreenHeight], 768
+    jnz .Not1366x768
+    mov dword[ScreenWidth], 1280
+    mov dword[ScreenHeight], 720
     
+.Not1366x768:
     mov eax, dword[ScreenWidth]
     sub eax, 160
     mov ebx, 24
@@ -830,7 +837,7 @@ sbyte MapCopyPasteCellArray, 0, 126*126*5 ; Original size = 20*16*5 (640x400)
     jmp 0x00448B43
 @ENDREPLACE
 
-@CLEAR 0x004489FE, 0x90, 0x00448A03 ; Do not clear screen
+@CLEAR 0x004489FE, 0x90, 0x00448A03 ; TileBrowser Do not clear screen
 
 @REPLACE 0x00448AA8, 0x00448AC9, AdjustTileBrowserDialogBackground
     mov eax, 400
