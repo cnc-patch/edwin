@@ -626,6 +626,252 @@ sbyte MapCopyPasteCellArray, 0, 126*126*5 ; Original size = 20*16*5 (640x400)
     jmp 0x004321F8
 @ENDREPLACE
 
+
+@REPLACE 0x00448274, 0x0044827B, AdjustTileBrowserDialogButtonXY1
+    mov edx, 378
+    add edx, dword[HighResAlignY]
+    push edx
+    mov edx, 4
+    add edx, dword[HighResAlignX]
+    push edx
+    jmp 0x0044827B
+@ENDREPLACE
+
+@REPLACE 0x004482B9, 0x004482C0, AdjustTileBrowserDialogButtonXY2
+    mov edx, 378
+    add edx, dword[HighResAlignY]
+    push edx
+    mov edx, 84
+    add edx, dword[HighResAlignX]
+    push edx
+    jmp 0x004482C0
+@ENDREPLACE
+
+@REPLACE 0x004482FE, 0x00448308, AdjustTileBrowserDialogButtonXY3
+    mov edx, 378
+    add edx, dword[HighResAlignY]
+    push edx
+    mov edx, 164
+    add edx, dword[HighResAlignX]
+    push edx
+    jmp 0x00448308
+@ENDREPLACE
+
+@REPLACE 0x00448346, 0x00448350, AdjustTileBrowserDialogButtonXY4
+    mov edx, 378
+    add edx, dword[HighResAlignY]
+    push edx
+    mov edx, 244
+    add edx, dword[HighResAlignX]
+    push edx
+    jmp 0x00448350
+@ENDREPLACE
+
+@REPLACE 0x0044838E, 0x00448398, AdjustTileBrowserDialogButtonXY5
+    mov edx, 378
+    add edx, dword[HighResAlignY]
+    push edx
+    mov edx, 324
+    add edx, dword[HighResAlignX]
+    push edx
+    jmp 0x00448398
+@ENDREPLACE
+
+@REPLACE 0x004483D6, 0x004483E0, AdjustTileBrowserDialogButtonXY6
+    mov edx, 378
+    add edx, dword[HighResAlignY]
+    push edx
+    mov edx, 404
+    add edx, dword[HighResAlignX]
+    push edx
+    jmp 0x004483E0
+@ENDREPLACE
+
+@REPLACE 0x0044841F, 0x00448429, AdjustTileBrowserDialogSelectTileXY1
+    mov ecx, 29
+    add ecx, dword[HighResAlignY]
+    mov ebx, 8
+    add ebx, dword[HighResAlignX]
+    jmp 0x00448429
+@ENDREPLACE
+
+@REPLACE 0x00448452, 0x0044845C, AdjustTileBrowserDialogSelectTileXY2
+    mov ecx, 29
+    add ecx, dword[HighResAlignY]
+    mov ebx, 168
+    add ebx, dword[HighResAlignX]
+    jmp 0x0044845C
+@ENDREPLACE
+
+@REPLACE 0x00448485, 0x0044848F, AdjustTileBrowserDialogSelectTileXY3
+    mov ecx, 29
+    add ecx, dword[HighResAlignY]
+    mov ebx, 328
+    add ebx, dword[HighResAlignX]
+    jmp 0x0044848F
+@ENDREPLACE
+
+@REPLACE 0x004484B5, 0x004484BF, AdjustTileBrowserDialogSelectTileXY4
+    mov ecx, 29
+    add ecx, dword[HighResAlignY]
+    mov ebx, 488
+    add ebx, dword[HighResAlignX]
+    jmp 0x004484BF
+@ENDREPLACE
+
+@REPLACE 0x004484E5, 0x004484EF, AdjustTileBrowserDialogSelectTileXY5
+    mov ecx, 145
+    add ecx, dword[HighResAlignY]
+    mov ebx, 8
+    add ebx, dword[HighResAlignX]
+    jmp 0x004484EF
+@ENDREPLACE
+
+@REPLACE 0x00448515, 0x0044851F, AdjustTileBrowserDialogSelectTileXY6
+    mov ecx, 145
+    add ecx, dword[HighResAlignY]
+    mov ebx, 168
+    add ebx, dword[HighResAlignX]
+    jmp 0x0044851F
+@ENDREPLACE
+
+@REPLACE 0x00448545, 0x0044854F, AdjustTileBrowserDialogSelectTileXY7
+    mov ecx, 145
+    add ecx, dword[HighResAlignY]
+    mov ebx, 328
+    add ebx, dword[HighResAlignX]
+    jmp 0x0044854F
+@ENDREPLACE
+
+@REPLACE 0x00448575, 0x0044857F, AdjustTileBrowserDialogSelectTileXY8
+    mov ecx, 145
+    add ecx, dword[HighResAlignY]
+    mov ebx, 488
+    add ebx, dword[HighResAlignX]
+    jmp 0x0044857F
+@ENDREPLACE
+
+@REPLACE 0x004485A5, 0x004485AF, AdjustTileBrowserDialogSelectTileXY9
+    mov ecx, 261
+    add ecx, dword[HighResAlignY]
+    mov ebx, 8
+    add ebx, dword[HighResAlignX]
+    jmp 0x004485AF
+@ENDREPLACE
+
+@REPLACE 0x004485D5, 0x004485DF, AdjustTileBrowserDialogSelectTileXY10
+    mov ecx, 261
+    add ecx, dword[HighResAlignY]
+    mov ebx, 168
+    add ebx, dword[HighResAlignX]
+    jmp 0x004485DF
+@ENDREPLACE
+
+@REPLACE 0x00448605, 0x0044860F, AdjustTileBrowserDialogSelectTileXY11
+    mov ecx, 261
+    add ecx, dword[HighResAlignY]
+    mov ebx, 328
+    add ebx, dword[HighResAlignX]
+    jmp 0x0044860F
+@ENDREPLACE
+
+@REPLACE 0x00448635, 0x0044863F, AdjustTileBrowserDialogSelectTileXY12
+    mov ecx, 261
+    add ecx, dword[HighResAlignY]
+    mov ebx, 488
+    add ebx, dword[HighResAlignX]
+    jmp 0x0044863F
+@ENDREPLACE
+
+@REPLACE 0x0044865A, 0x00448664, AdjustTileBrowserDialogButtonXY7
+    mov ecx, 378
+    add ecx, dword[HighResAlignY]
+    push ecx
+    mov ecx, 482
+    add ecx, dword[HighResAlignX]
+    jmp 0x00448664
+@ENDREPLACE
+
+@REPLACE 0x0044868D, 0x00448697, AdjustTileBrowserDialogButtonXY8
+    mov ecx, 378
+    add ecx, dword[HighResAlignY]
+    push ecx
+    mov ecx, 522
+    add ecx, dword[HighResAlignX]
+    jmp 0x00448697
+@ENDREPLACE
+
+@REPLACE 0x004486BE, 0x004486C8, AdjustTileBrowserDialogButtonXY9
+    mov ecx, 378
+    add ecx, dword[HighResAlignY]
+    push ecx
+    mov ecx, 562
+    add ecx, dword[HighResAlignX]
+    jmp 0x004486C8
+@ENDREPLACE
+
+@REPLACE 0x004486EF, 0x004486F9, AdjustTileBrowserDialogButtonXY10
+    mov ecx, 378
+    add ecx, dword[HighResAlignY]
+    push ecx
+    mov ecx, 602
+    add ecx, dword[HighResAlignX]
+    jmp 0x004486F9
+@ENDREPLACE
+
+@REPLACE 0x00448B36, 0x00448B43, AdjustTileBrowserDialogTileBackgroundBorderShpsXY
+    mov edx, dword[HighResAlignY]
+    add dword[EBP-0x528], edx
+    mov edx, dword[EBP-0x528]
+    dec edx
+    mov eax, dword[HighResAlignX]
+    add dword[EBP-0x524], eax
+    mov eax, dword[EBP-0x524]
+    jmp 0x00448B43
+@ENDREPLACE
+
+@CLEAR 0x004489FE, 0x90, 0x00448A03 ; Do not clear screen
+
+@REPLACE 0x00448AA8, 0x00448AC9, AdjustTileBrowserDialogBackground
+    mov eax, 400
+    add eax, dword[HighResAlignY]
+    push eax
+    mov esi, 640
+    add esi, dword[HighResAlignX]
+    mov ebx, 16
+    add ebx, dword[HighResAlignY]
+    mov edx, dword[HighResAlignX]
+    jmp 0x00448AC9
+@ENDREPLACE
+
+@REPLACE 0x00461EA9, 0x00461EAE, AdjustTileBrowserDialogPageXofYTabBackground
+    xor ecx, ecx ; Y
+    mov ebx, dword[ebp-0x38]
+    add ebx, dword[HighResAddedWidth]
+    jmp 0x00461EAE
+@ENDREPLACE
+
+@REPLACE 0x00461EEB, 0x00461EF0, AdjustTileBrowserDialogPageXofYTabText
+    push 0 ; Y
+    mov eax, dword[EBP-0x38]
+    add eax, dword[HighResAddedWidth]
+    jmp 0x00461EF0
+@ENDREPLACE
+
+@REPLACE 0x00461F2E, 0x00461F33, AdjustTileBrowserDialogSelectTileTabBackground
+    xor ecx, ecx ; Y
+    mov ebx, dword[ebp-0x38]
+    add ebx, dword[HighResAddedWidth]
+    jmp 0x00461F33
+@ENDREPLACE
+
+@REPLACE 0x00461F70, 0x00461F75, AdjustTileBrowserDialogSelectTileTabText
+    push 0
+    mov eax, dword[ebp-0x38]
+    add eax, dword[HighResAddedWidth]
+    jmp 0x00461F75
+@ENDREPLACE
+
 @REPLACE 0x0042D46F, 0x0042D476, AdjustTitleScreen
     push dword[eax+4]
     cmp byte[TitleScreenLoaded], 1

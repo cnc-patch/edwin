@@ -44,6 +44,7 @@ setcglob 0x00446672, LoadBlankMap
 setcglob 0x00446A6D, LoadMapFile
 setcglob 0x00474278, OriginalWindowProcedure
 setcglob 0x0044A737, FillSelectedArea
+setcglob 0x004481F5, TileBrowserDialog
 
 setcglob 0x00485561, strcpy
 setcglob 0x0047A687, strncpy

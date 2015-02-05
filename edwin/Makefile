@@ -14,6 +14,7 @@ INCLUDES    = -Iinc/ -I../shared/inc/ -I../common/inc/
 
 LIBS        = -nostdlib
 OBJS        = \
+            src/show_tilebrowser_hotkey.o \
             src/cut_selected_area.o \
             src/single_proc_affinity.o \
             src/keep_rules_ini_mods.o \

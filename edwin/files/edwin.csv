@@ -77,8 +77,21 @@ RVA,label,comment
 00046DF8,UnknownCnC95Dialog,
 000481F5,TileBrowserDialog,
 00048274,,Pos Y
+00048279,,Pos X
+0004841F,,Pos Y
+00048424,,Pos X
+00048AAB,,background height
+00048AB6,,background width
+00048AC0,,Pos Y
+00048AC7,,Pos X
 00048AE4,,TileBrowser MaxItems width
 00048AFD,,TileBrowser MaxItems height
+00048B2C,,Height
+00048B31,,Width
+00048B36,,Pos Y
+00048B3D,,Pos X
+00049D49,HotkeysStuff,
+0004A03B,,SpacePressed
 0004A4A9,MapRightClickContextMenu,
 0004A737,FillSelectedArea,
 0004A983,CopySelectedMapArea,
@@ -114,6 +127,14 @@ RVA,label,comment
 00061590,,PassableTabBackgroundX
 000615F6,,PassableTextX
 000616DE,DrawMapSizeTab,
+00061D4F,DrawTileBrowserTabs,
+00061E2E,,Options tab Background
+00061EA9,,Pos Y
+00061EAB,,Pos X
+00061EB8,,Page XofY Tab Background
+00061EEB,,Pos Y
+00061EED,,Pos X
+00061F3D,,Select Tile tab background
 00065F5D,CreateButton?,
 00074278,W?Windows_Procedure$n(pnvuiuil)l,W?Windows_Procedure$n(pnvuiuil)l
 00074908,LoadTitleScreen,
