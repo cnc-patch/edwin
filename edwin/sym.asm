@@ -45,6 +45,8 @@ setcglob 0x00446A6D, LoadMapFile
 setcglob 0x00474278, OriginalWindowProcedure
 setcglob 0x0044A737, FillSelectedArea
 setcglob 0x004481F5, TileBrowserDialog
+setcglob 0x0041F915, MainLoop
+
 
 setcglob 0x00485561, strcpy
 setcglob 0x0047A687, strncpy
@@ -59,6 +61,7 @@ setcglob 0x005401EC, _imp__CloseHandle
 setcglob 0x00540428, _imp__LoadLibraryA
 setcglob 0x00540418, _imp__GetProcAddress
 setcglob 0x0054020C, _imp__GetCurrentProcess
+setcglob 0x00540258, _imp__Sleep
         
 ;Address  Ordinal Name                      Library 
 ;-------  ------- ----                      ------- 
@@ -111,7 +114,6 @@ setcglob 0x0054020C, _imp__GetCurrentProcess
 ;0054024C         SetFilePointer            KERNEL32
 ;00540250         SetPriorityClass          KERNEL32
 ;00540254         SetThreadPriority         KERNEL32
-;00540258         Sleep                     KERNEL32
 ;0054025C         TerminateThread           KERNEL32
 ;00540260         WriteFile                 KERNEL32
 ;00540274         GetActiveWindow           USER32  

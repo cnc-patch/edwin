@@ -13,6 +13,7 @@ cextern RedalertMixPath
 cextern VideoBackBuffer
 cextern HardwareFills
 cextern SingleProcAffinity
+cextern LimitCpuUsage
 cextern FileClass__FileClass
 cextern INIClass__Save
 cextern _imp__CreateFileA
@@ -33,6 +34,7 @@ sstring RedalertMixKey, "RedalertMix"
 sstring VideoBackBufferKey, "VideoBackBuffer"
 sstring HardwareFillsKey, "HardwareFills"
 sstring SingleProcAffinityKey, "SingleProcAffinity"
+sstring LimitCpuUsageKey, "LimitCpuUsage"
 
 @REPLACE 0x00461130, 0x004611A2, LoadSettingsIni
     INI_Get_Int INIClass__SettingsIni, OptionsSection, ScrollRateKey, 3
@@ -61,6 +63,9 @@ sstring SingleProcAffinityKey, "SingleProcAffinity"
     
     INI_Get_Bool INIClass__SettingsIni, OptionsSection, SingleProcAffinityKey, byte[SingleProcAffinity]
     mov byte[SingleProcAffinity], al
+
+    INI_Get_Bool INIClass__SettingsIni, OptionsSection, LimitCpuUsageKey, byte[LimitCpuUsage]
+    mov byte[LimitCpuUsage], al
     
     jmp 0x004611A2
 @ENDREPLACE
@@ -78,6 +83,7 @@ gfunction SaveSettingsIni
     INI_Put_Bool INIClass__SettingsIni, OptionsSection, VideoBackBufferKey, byte[VideoBackBuffer]
     INI_Put_Bool INIClass__SettingsIni, OptionsSection, HardwareFillsKey, byte[HardwareFills]
     INI_Put_Bool INIClass__SettingsIni, OptionsSection, SingleProcAffinityKey, byte[SingleProcAffinity]
+    INI_Put_Bool INIClass__SettingsIni, OptionsSection, LimitCpuUsageKey, byte[LimitCpuUsage]
 
     mov edx, SettingsIniPath
     mov eax, FileClass__SettingsIni

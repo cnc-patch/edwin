@@ -5,6 +5,7 @@ RVA,label,comment
 00008EFD,FileClass:Is_Available?,
 000098FF,INIClass::Save,INIClass::Save
 00019B12,CellClass::Unknown,
+0001F915,MainLoop,
 000202F3,DrawShp,
 0002104C,ScaleFunction,
 00021814,GetScreenWidth,
@@ -136,7 +137,7 @@ RVA,label,comment
 00061EED,,Pos X
 00061F3D,,Select Tile tab background
 00065F5D,CreateButton?,
-00074278,W?Windows_Procedure$n(pnvuiuil)l,W?Windows_Procedure$n(pnvuiuil)l
+00074278,"Windows_Procedure(void *,uint,uint,long)","Windows_Procedure(void *,uint,uint,long)"
 00074908,LoadTitleScreen,
 00074977,ReadPCX?,
 00075ED0,fptc,fptc
@@ -165,10 +166,10 @@ RVA,label,comment
 0007BD38,INIClass::Put_PKey(PKey &),
 0007BDB1,const INIClass::Get_PKey(int),
 0007CD40,__wcpp_2_module_dtor__,__wcpp_2_module_dtor__
-0007CD9C,W?fs_state_table$n(pn$ro_dtreg$$)pn$__7a4u3RO_STATE$$,W?fs_state_table$n(pn$ro_dtreg$$)pn$__7a4u3RO_STATE$$
-0007CDA0,W?fs_point_object$n(pn$rw_dtreg$$ui)pnv,W?fs_point_object$n(pn$rw_dtreg$$ui)pnv
-0007CDA7,W?fs_init_traverse$n(pn$__1j2o3bSTAB_TRAVERSE$$pn$rw_dtreg$$)v,W?fs_init_traverse$n(pn$__1j2o3bSTAB_TRAVERSE$$pn$rw_dtreg$$)v
-0007CDAC,W?init$n()v,W?init$n()v
+0007CD9C,fs_state_table(ro_dtreg *),fs_state_table(ro_dtreg *)
+0007CDA0,"fs_point_object(rw_dtreg *,uint)","fs_point_object(rw_dtreg *,uint)"
+0007CDA7,"fs_init_traverse(__1j2o3bSTAB_TRAVERSE *,rw_dtreg *)","fs_init_traverse(__1j2o3bSTAB_TRAVERSE *,rw_dtreg *)"
+0007CDAC,init(void),init(void)
 0007CDB7,__wcpp_2_mod_register__,__wcpp_2_mod_register__
 0007CDE5,FileClass:FileClass2?,
 0007D0EB,FileClass::Is_Available2?,
@@ -197,10 +198,10 @@ RVA,label,comment
 00085548,strlen_,strlen_
 00085561,strcpy_,strcpy_
 00085663,ftime_,ftime_
-00087114,W?ls_state_table$n(pn$ro_dtreg$$)pn$__7a4u3RO_STATE$$,W?ls_state_table$n(pn$ro_dtreg$$)pn$__7a4u3RO_STATE$$
-00087118,W?ls_point_object$n(pn$rw_dtreg$$ui)pnv,W?ls_point_object$n(pn$rw_dtreg$$ui)pnv
-0008711C,W?ls_init_traverse$n(pn$__1j2o3bSTAB_TRAVERSE$$pn$rw_dtreg$$)v,W?ls_init_traverse$n(pn$__1j2o3bSTAB_TRAVERSE$$pn$rw_dtreg$$)v
-00087121,W?init$n()v_0,W?init$n()v_0
+00087114,ls_state_table(ro_dtreg *),ls_state_table(ro_dtreg *)
+00087118,"ls_point_object(rw_dtreg *,uint)","ls_point_object(rw_dtreg *,uint)"
+0008711C,"ls_init_traverse(__1j2o3bSTAB_TRAVERSE *,rw_dtreg *)","ls_init_traverse(__1j2o3bSTAB_TRAVERSE *,rw_dtreg *)"
+00087121,init(void),init(void)
 0008712C,j___wcpp_2_mod_register__,j___wcpp_2_mod_register__
 000873A0,_nmalloc_,_nmalloc_
 00087490,memset_,memset_
@@ -250,32 +251,32 @@ RVA,label,comment
 00096D4B,__wcpp_2_stab_trav_comp__,__wcpp_2_stab_trav_comp__
 00096D50,__wcpp_2_stab_trav_next__,__wcpp_2_stab_trav_next__
 00096DD5,__wcpp_2_stab_trav_move__,__wcpp_2_stab_trav_move__
-00096E68,W?callTerminate$n(pn$thread_ctl$$)v,W?callTerminate$n(pn$thread_ctl$$)v
+00096E68,callTerminate(thread_ctl *),callTerminate(thread_ctl *)
 00096E7F,__wcpp_2_corrupted_stack__,__wcpp_2_corrupted_stack__
-00096E90,W?typesigIndex$n(pn$dispatch_exc$$uipnpn$rt_type_sig$$)ui,W?typesigIndex$n(pn$dispatch_exc$$uipnpn$rt_type_sig$$)ui
-00096F2C,W?dispatchableFnExc$n(pn$dispatch_exc$$pn$__iaap9DTOR_CMD$$)i,W?dispatchableFnExc$n(pn$dispatch_exc$$pn$__iaap9DTOR_CMD$$)i
-00096F53,W?fneDispatch$n(pn$dispatch_exc$$)v,W?fneDispatch$n(pn$dispatch_exc$$)v
-00096F69,W?dispatchableCatch$n(pn$dispatch_exc$$pn$__iaap9DTOR_CMD$$)i,W?dispatchableCatch$n(pn$dispatch_exc$$pn$__iaap9DTOR_CMD$$)i
-00096F8F,W?throwCnvSig$n(pn$dispatch_exc$$)pn$rt_type_sig$$,W?throwCnvSig$n(pn$dispatch_exc$$)pn$rt_type_sig$$
-00096F9D,W?excToBePopped$n(pn$thread_ctl$$)i,W?excToBePopped$n(pn$thread_ctl$$)i
-00097040,W?catchDispatch$n(pn$dispatch_exc$$)v,W?catchDispatch$n(pn$dispatch_exc$$)v
-0009717E,W?catchDone$n(pn$thread_ctl$$pn$active_exc$$)v,W?catchDone$n(pn$thread_ctl$$pn$active_exc$$)v
+00096E90,"typesigIndex(dispatch_exc *,uint,rt_type_sig **)","typesigIndex(dispatch_exc *,uint,rt_type_sig **)"
+00096F2C,"dispatchableFnExc(dispatch_exc *,__iaap9DTOR_CMD *)","dispatchableFnExc(dispatch_exc *,__iaap9DTOR_CMD *)"
+00096F53,fneDispatch(dispatch_exc *),fneDispatch(dispatch_exc *)
+00096F69,"dispatchableCatch(dispatch_exc *,__iaap9DTOR_CMD *)","dispatchableCatch(dispatch_exc *,__iaap9DTOR_CMD *)"
+00096F8F,throwCnvSig(dispatch_exc *),throwCnvSig(dispatch_exc *)
+00096F9D,excToBePopped(thread_ctl *),excToBePopped(thread_ctl *)
+00097040,catchDispatch(dispatch_exc *),catchDispatch(dispatch_exc *)
+0009717E,"catchDone(thread_ctl *,active_exc *)","catchDone(thread_ctl *,active_exc *)"
 000971BB,__wcpp_2_catch_done__,__wcpp_2_catch_done__
-000971DC,W?unwindExc$n(pn$dispatch_exc$$)v,W?unwindExc$n(pn$dispatch_exc$$)v
-00097201,W?unwindStack$n(pn$dispatch_exc$$)v,W?unwindStack$n(pn$dispatch_exc$$)v
-00097257,W?dispatchable$n(pn$dispatch_exc$$pn$rw_dtreg$$)$$TE$$,W?dispatchable$n(pn$dispatch_exc$$pn$rw_dtreg$$)$$TE$$
-00097358,W?getActiveExc$n(pn$thread_ctl$$)pn$active_exc$$,W?getActiveExc$n(pn$thread_ctl$$)pn$active_exc$$
-000973DC,W?dispatch_init$n(pn$dispatch_exc$$pn$throw_ro$$i)v,W?dispatch_init$n(pn$dispatch_exc$$pn$throw_ro$$i)v
+000971DC,unwindExc(dispatch_exc *),unwindExc(dispatch_exc *)
+00097201,unwindStack(dispatch_exc *),unwindStack(dispatch_exc *)
+00097257,W?dispatchable$n_pn$dispatch_exc$$pn$rw_dtreg$$_$$TE$$,W?dispatchable$n_pn$dispatch_exc$$pn$rw_dtreg$$_$$TE$$
+00097358,getActiveExc(thread_ctl *),getActiveExc(thread_ctl *)
+000973DC,"dispatch_init(dispatch_exc *,throw_ro *,int)","dispatch_init(dispatch_exc *,throw_ro *,int)"
 00097415,__wcpp_2_dispatchable__,__wcpp_2_dispatchable__
 0009746E,__wcpp_2_save_exc__,__wcpp_2_save_exc__
 000974EC,__wcpp_2_dispatch__,__wcpp_2_dispatch__
-0009759D,W?processThrow$n(pnvpn$throw_ro$$i)v,W?processThrow$n(pnvpn$throw_ro$$i)v
+0009759D,"processThrow(void *,throw_ro *,int)","processThrow(void *,throw_ro *,int)"
 000975E4,__wcpp_2_rethrow__,__wcpp_2_rethrow__
 000975F4,__wcpp_2_throw__,__wcpp_2_throw__
 000975FE,__wcpp_2_throw_zero__,__wcpp_2_throw_zero__
-00097606,W?longjmpExcPop$n(pn$dispatch_exc$$pn$rw_dtreg$$)v,W?longjmpExcPop$n(pn$dispatch_exc$$pn$rw_dtreg$$)v
-00097651,W?longjmpDtoring$n(pfv)v,W?longjmpDtoring$n(pfv)v
-000976F1,W?longjmpInit$n()v,W?longjmpInit$n()v
+00097606,"longjmpExcPop(dispatch_exc *,rw_dtreg *)","longjmpExcPop(dispatch_exc *,rw_dtreg *)"
+00097651,longjmpDtoring(void *),longjmpDtoring(void *)
+000976F1,longjmpInit(void),longjmpInit(void)
 00097A5F,HandlerRoutine,HandlerRoutine
 00097CF1,nullsub_4,nullsub_4
 00098194,__InitAccessH__0,__InitAccessH__0
@@ -319,7 +320,7 @@ RVA,label,comment
 00098FF7,_Alphabet,_Alphabet
 0009901C,utoa_,utoa_
 00099066,itoa_,itoa_
-00099081,W?_no_support_loaded$n()v,W?_no_support_loaded$n()v
+00099081,_no_support_loaded(void),_no_support_loaded(void)
 00099093,_Alphabet_0,_Alphabet_0
 000990B8,ultoa_,ultoa_
 00099102,ltoa_,ltoa_
@@ -345,8 +346,8 @@ RVA,label,comment
 00099B0B,__HeapManager_expand_,__HeapManager_expand_
 00099CA9,stackavail_,stackavail_
 00099CE4,__wcpp_2_bit_test__,__wcpp_2_bit_test__
-00099D04,j_W?terminate$n()v,j_W?terminate$n()v
-00099D0C,W?catBaseSig$n(pn$rt_type_sig$$)pn$1$,W?catBaseSig$n(pn$rt_type_sig$$)pn$1$
+00099D04,terminate(void),terminate(void)
+00099D0C,catBaseSig(rt_type_sig *),catBaseSig(rt_type_sig *)
 00099D15,__wcpp_2_ts_equiv__,__wcpp_2_ts_equiv__
 00099D6E,_setjmp_,_setjmp_
 00099DAD,longjmp_,longjmp_
@@ -383,8 +384,8 @@ RVA,label,comment
 0009A745,__hex_,__hex_
 0009A751,__MkTmpFile_,__MkTmpFile_
 0009A7B6,__doclose_,__doclose_
-0009A864,W?terminate$n()v,W?terminate$n()v
-0009A8B0,W?unexpected$n()v,W?unexpected$n()v
+0009A864,terminate(void),terminate(void)
+0009A8B0,unexpected(void),unexpected(void)
 0009A8E1,isatty_,isatty_
 0009A922,__CInitThread_,__CInitThread_
 0009A925,_beginthread_,_beginthread_

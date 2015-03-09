@@ -4,7 +4,7 @@
 
 cextern ScrollRate
 
-gbyte SlowerScrollRate, 1
+gbyte SlowerScrollRate, 0
 
 @REPLACE 0x0045B81B, 0x0045B821, SlowerScrolling
     mov eax, dword[eax+0x4B0938]
