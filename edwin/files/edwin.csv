@@ -106,6 +106,7 @@ RVA,label,comment
 0004AE3C,PasteClipCopiedMapData,
 0004B125,UnselectCurrentSelection?,
 0004B178,,crash right click
+0004DE70,DrawMapRightClickContextMenu?,
 000502CD,ShowMessageBoxYesNo,
 000574CC,SetupMiniMap?,
 000576D6,Drawing_Unknown2,
