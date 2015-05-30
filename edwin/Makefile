@@ -14,6 +14,8 @@ INCLUDES    = -Iinc/ -I../shared/inc/ -I../common/inc/
 
 LIBS        = -nostdlib
 OBJS        = \
+            src/edwin.ini-func.o \
+            src/edwin.ini.o \
             src/limit_cpu_usage.o \
             src/show_tilebrowser_hotkey.o \
             src/cut_selected_area.o \
@@ -25,7 +27,6 @@ OBJS        = \
             src/multiple_instances.o \
             src/change_window_title.o \
             src/slower_scrollrate.o \
-            src/edwin.ini.o \
             src/hires.o \
             src/load_map_command_line.o \
             src/theaters.o \
@@ -33,6 +34,7 @@ OBJS        = \
             src/longer_filenames.o \
             src/improved_error_messages.o \
             \
+            watcall.o \
             sym.o \
             res/res.o
 

@@ -1,9 +1,9 @@
-cextern INIClass__Get_Int
-cextern INIClass__Get_String
-cextern INIClass__Get_Bool
-cextern INIClass__Put_Int
-cextern INIClass__Put_String
-cextern INIClass__Put_Bool
+extern INIClass__Get_Int
+extern INIClass__Get_String
+extern INIClass__Get_Bool
+extern INIClass__Put_Int
+extern INIClass__Put_String
+extern INIClass__Put_Bool
 
 ; args: <INIClass>, <section>, <key>, <default>
 %macro INI_Get_Bool 4

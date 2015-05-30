@@ -31,15 +31,7 @@ setcglob 0x4ECD58, SidebarButtonTerrainGemX
 setcglob 0x4ECCE8, SidebarButtonTerrainWaterX
 
 ; ### functions ###
-setcglob 0x0047B6F7, INIClass__Put_Int
-setcglob 0x0047B7A9, INIClass__Get_Int
-setcglob 0x0047B945, INIClass__Put_String
-setcglob 0x0047BAA4, INIClass__Get_String
-setcglob 0x0047BB68, INIClass__Put_Bool
-setcglob 0x0047BBBC, INIClass__Get_Bool
 setcglob 0x0047AA3A, INIClass__ClearSection
-setcglob 0x004098FF, INIClass__Save
-setcglob 0x0047CDE5, FileClass__FileClass
 setcglob 0x00446672, LoadBlankMap
 setcglob 0x00446A6D, LoadMapFile
 setcglob 0x00474278, OriginalWindowProcedure
@@ -62,6 +54,16 @@ setcglob 0x00540428, _imp__LoadLibraryA
 setcglob 0x00540418, _imp__GetProcAddress
 setcglob 0x0054020C, _imp__GetCurrentProcess
 setcglob 0x00540258, _imp__Sleep
+
+; watcall functions
+setwatglob 0x0047B6F7, INIClass__Put_Int, 4
+setwatglob 0x0047B7A9, INIClass__Get_Int, 4
+setwatglob 0x0047B945, INIClass__Put_String, 4
+setwatglob 0x0047BAA4, INIClass__Get_String, 6
+setwatglob 0x0047BB68, INIClass__Put_Bool, 4
+setwatglob 0x0047BBBC, INIClass__Get_Bool, 4
+setwatglob 0x004098FF, INIClass__Save, 2
+setwatglob 0x0047CDE5, FileClass__FileClass, 2
         
 ;Address  Ordinal Name                      Library 
 ;-------  ------- ----                      ------- 
