@@ -1,13 +1,8 @@
 %include "macros/extern.inc"
 
-%define true 1
-%define false 0
-
 %macro gstring 2
-    [section .rdata]
     cglobal %1
-    %1 db %2,0
-    __SECT__
+    sstring %1, %2
 %endmacro
 
 %macro sstring 2
@@ -17,83 +12,113 @@
 %endmacro
 
 %macro gstring 3
-    [section .data]
     cglobal %1
-    %1 db %2
-    %strlen ___StringLength %2
-    times ((%3) - (___StringLength)) db 0
-    __SECT__
+    sstring %1, %2, %3
 %endmacro
 
 %macro sstring 3
-    [section .data]
-    %1 db %2
     %strlen ___StringLength %2
-    times ((%3) - (___StringLength)) db 0
-    __SECT__
+    
+    %if ___StringLength > 0
+        [section .data]
+        %1 db %2
+        times ((%3) - (___StringLength)) db 0
+        __SECT__
+    %else
+        [section .bss]
+        %1 resb %3
+        __SECT__
+    %endif
 %endmacro
 
 %macro gint 2
-    [section .data]
     cglobal %1
-    %1 dd %2
-    __SECT__
+    sint %1, {%2}
 %endmacro
 
 %macro sint 2
-    [section .data]
-    %1 dd %2
-    __SECT__
+    %ifidni %2,0
+        [section .bss]
+        %1 resd 1
+        __SECT__
+    %else
+        [section .data]
+        %1 dd %2
+        __SECT__
+    %endif
 %endmacro
 
 %macro gshort 2
-    [section .data]
     cglobal %1
-    %1 dw %2
-    __SECT__
+    sshort %1, {%2}
 %endmacro
 
 %macro sshort 2
-    [section .data]
-    %1 dw %2
-    __SECT__
+    %ifidni %2,0
+        [section .bss]
+        %1 resw 1
+        __SECT__
+    %else
+        [section .data]
+        %1 dw %2
+        __SECT__
+    %endif
 %endmacro
 
 %macro gbyte 2
-    [section .data]
     cglobal %1
-    %1 db %2
-    __SECT__
+    sbyte %1, {%2}
 %endmacro
 
 %macro sbyte 2
-    [section .data]
-    %1 db %2
-    __SECT__
+    %ifidni %2,0
+        [section .bss]
+        %1 resb 1
+        __SECT__
+    %else
+        [section .data]
+        %1 db %2
+        __SECT__
+    %endif
 %endmacro
 
 %macro gbyte 3
-    [section .data]
     cglobal %1
-    %1 times %3 db %2
-    __SECT__
+    sbyte %1, {%2}, %3
 %endmacro
 
 %macro sbyte 3
-    [section .data]
-    %1 times %3 db %2
-    __SECT__
+    %ifidni %2,0
+        [section .bss]
+        %1 resb %3
+        __SECT__
+    %else
+        [section .data]
+        %1 times %3 db %2
+        __SECT__
+    %endif
 %endmacro
 
 %macro gfunction 1
-    [section .text]
-    align 16, db 0xCC
     cglobal %1
-    %1:
+    sfunction %1
 %endmacro
 
 %macro sfunction 1
     [section .text]
     align 16, db 0xCC
     %1:
+%endmacro
+
+%macro gfile 2
+    cglobal %1
+    cglobal %1Length
+    sfile %1, %2
+%endmacro
+
+%macro sfile 2
+    [section .rdata]
+    %1 incbin %2
+    %1Length dd $-%1
+    __SECT__
 %endmacro
