@@ -1,4 +1,5 @@
 %include "macros/setsym.inc"
+%include "macros/watcall.inc"
 
 setcglob 0x0048FBBA, start
 
